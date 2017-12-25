@@ -1,7 +1,7 @@
 # hapi-swagger-static
 
 Plugin for Hapi v17 providing a static html documentation page.
-It's a companion plugin for ´hapi-swagger´
+It's a small companion plugin for `hapi-swagger`
 utilizing `bootprint` and `bootprint-openapi`
 to create a static page from the `/swagger.json`.
 The static page is provided as route `/documentation.html` (can be renamed).
