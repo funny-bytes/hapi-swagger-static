@@ -34,14 +34,13 @@ const register = async (server, {
   path: route = '/documentation.html',
   bootprint: bootprintOptions = {},
   cache = { privacy: 'public', expiresIn: 60 * 60 * 1000 }, // one hour
+  auth, // if undefined, inheriting auth settings from server.options.routes.auth
 }) => {
   // Provide endpoint serving html from file
   server.route({
     method: 'GET',
     path: route,
-    options: {
-      cache,
-    },
+    options: auth === undefined ? { cache } : { cache, auth },
     handler: async (request, h) => {
       try {
         const stream = fs.createReadStream(fileIndexHtmlInline, { encoding: 'utf-8' });
