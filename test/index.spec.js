@@ -4,6 +4,7 @@ const Inert = require('inert');
 const Vision = require('vision');
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
+const fs = require('fs');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const HapiSwaggerStatic = require('../src/index');
@@ -99,5 +100,29 @@ describe('hapi-swagger-static with `path` option', async () => {
         expect(payload).to.contain('<!DOCTYPE html>');
         expect(payload).to.contain('<title>API Documentation 4711</title>');
         expect(payload).to.contain('/test4711');
+      }));
+});
+
+describe('hapi-swagger-static with error while reading html file', async () => {
+  let server;
+
+  beforeEach(async () => {
+    server = await setup({});
+    sinon.stub(fs, 'createReadStream').throws('Error');
+  });
+
+  afterEach(async () => {
+    await server.stop();
+    fs.createReadStream.restore();
+  });
+
+  it('should return http 500', () =>
+    server
+      .inject({
+        url: '/documentation.html',
+      })
+      .should.be.fulfilled.then((response) => {
+        const { statusCode } = response;
+        expect(statusCode).to.be.equal(500);
       }));
 });
