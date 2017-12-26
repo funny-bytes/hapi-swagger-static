@@ -66,7 +66,9 @@ describe('hapi-swagger-static with default options', async () => {
         expect(statusCode).to.be.equal(200);
         expect(headers).to.have.property('content-type');
         expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
-        expect(headers['cache-control']).to.be.equal('max-age=3600, must-revalidate, public');
+        expect(headers).to.have.property('cache-control');
+        expect(headers['cache-control']).to.contain('max-age=3600');
+        expect(headers['cache-control']).to.contain('public');
         expect(payload).to.contain('<html>');
         expect(payload).to.contain('<!DOCTYPE html>');
         expect(payload).to.contain('<title>API Documentation 4711</title>');
@@ -95,11 +97,63 @@ describe('hapi-swagger-static with `path` option', async () => {
         expect(statusCode).to.be.equal(200);
         expect(headers).to.have.property('content-type');
         expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
-        expect(headers['cache-control']).to.be.equal('max-age=3600, must-revalidate, public');
+        expect(headers).to.have.property('cache-control');
+        expect(headers['cache-control']).to.contain('max-age=3600');
+        expect(headers['cache-control']).to.contain('public');
         expect(payload).to.contain('<html>');
         expect(payload).to.contain('<!DOCTYPE html>');
         expect(payload).to.contain('<title>API Documentation 4711</title>');
         expect(payload).to.contain('/test4711');
+      }));
+});
+
+describe('hapi-swagger-static with `cache` option equals `false`', async () => {
+  let server;
+
+  beforeEach(async () => {
+    server = await setup({ pluginOptions: { cache: false } });
+  });
+
+  afterEach(async () => {
+    await server.stop();
+  });
+
+  it('should not set `cache-control` header', () =>
+    server
+      .inject({
+        url: '/documentation.html',
+      })
+      .should.be.fulfilled.then((response) => {
+        const { statusCode, headers } = response;
+        expect(statusCode).to.be.equal(200);
+        expect(headers).to.not.have.property('cache-control');
+      }));
+});
+
+describe('hapi-swagger-static with specific `cache` option', async () => {
+  let server;
+
+  beforeEach(async () => {
+    server = await setup({
+      pluginOptions: { cache: { privacy: 'public', expiresIn: 24 * 60 * 60 * 1000 } },
+    });
+  });
+
+  afterEach(async () => {
+    await server.stop();
+  });
+
+  it('should set `cache-control` header specifically', () =>
+    server
+      .inject({
+        url: '/documentation.html',
+      })
+      .should.be.fulfilled.then((response) => {
+        const { statusCode, headers } = response;
+        expect(statusCode).to.be.equal(200);
+        expect(headers).to.have.property('cache-control');
+        expect(headers['cache-control']).to.contain('max-age=86400');
+        expect(headers['cache-control']).to.contain('public');
       }));
 });
 
