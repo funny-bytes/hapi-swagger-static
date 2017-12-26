@@ -180,3 +180,27 @@ describe('hapi-swagger-static with error while reading html file', async () => {
         expect(statusCode).to.be.equal(500);
       }));
 });
+
+describe('hapi-swagger-static with error while plugin registration', async () => {
+  let server;
+
+  beforeEach(async () => {
+    sinon.stub(fs, 'createReadStream').throws('Error');
+    sinon.stub(fs, 'createWriteStream').throws('Error');
+  });
+
+  afterEach(async () => {
+    fs.createReadStream.restore();
+    fs.createWriteStream.restore();
+  });
+
+  it('should not fail', async () => {
+    try {
+      server = await setup({});
+    } catch (error) {
+      expect.fail(0, 1, error);
+    } finally {
+      await server.stop();
+    }
+  });
+});
