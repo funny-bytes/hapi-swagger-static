@@ -46,6 +46,7 @@ const register = async (server, {
         const stream = fs.createReadStream(fileIndexHtmlInline, { encoding: 'utf-8' });
         return h.response(stream).type('text/html').charset('utf-8');
       } catch (error) {
+        request.log(['error'], error);
         return Boom.badImplementation();
       }
     },
