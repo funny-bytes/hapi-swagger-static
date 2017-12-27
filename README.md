@@ -10,6 +10,7 @@ The static page is provided as route `/documentation.html` (can be renamed).
 [![Coverage Status](https://coveralls.io/repos/github/frankthelen/hapi-swagger-static/badge.svg?branch=master)](https://coveralls.io/github/frankthelen/hapi-swagger-static?branch=master)
 [![dependencies Status](https://david-dm.org/frankthelen/hapi-swagger-static/status.svg)](https://david-dm.org/frankthelen/hapi-swagger-static)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/hapi-swagger-static.svg)](https://greenkeeper.io/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f71c0020a54eefa732ef/maintainability)](https://codeclimate.com/github/frankthelen/hapi-swagger-static/maintainability)
 [![node](https://img.shields.io/node/v/hapi-swagger-static.svg)]()
 [![License Status](http://img.shields.io/npm/l/hapi-swagger-static.svg)]()
 
