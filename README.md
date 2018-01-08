@@ -11,6 +11,7 @@ The static page is provided as route `/documentation.html` (can be renamed).
 [![dependencies Status](https://david-dm.org/frankthelen/hapi-swagger-static/status.svg)](https://david-dm.org/frankthelen/hapi-swagger-static)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/hapi-swagger-static.svg)](https://greenkeeper.io/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f71c0020a54eefa732ef/maintainability)](https://codeclimate.com/github/frankthelen/hapi-swagger-static/maintainability)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ffrankthelen%2Fhapi-swagger-static.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ffrankthelen%2Fhapi-swagger-static?ref=badge_shield)
 [![node](https://img.shields.io/node/v/hapi-swagger-static.svg)]()
 [![License Status](http://img.shields.io/npm/l/hapi-swagger-static.svg)]()
 
