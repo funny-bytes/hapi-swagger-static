@@ -60,7 +60,14 @@ The plugin provides the following options:
 
 | Option      | Default     | Description |
 |-------------|-------------|-------------|
-| `path`      | `/documentation.html` | The route providing the static documentation page. |
+| `path`      | `/documentation.html` | The endpoint providing the static documentation page. |
 | `bootprint` | `{}` | Bootprint options as passed to `bootprint.merge()`. Please refer to the [Bootprint configuration options](https://github.com/bootprint/bootprint/blob/master/doc/config.md) for more information. |
-| `cache`     | `{ privacy: 'public', expiresIn: 60 * 60 * 1000 } // one hour` | Hapi's `route.options.cache`. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionscache) for more information. |
-| `auth`      |  - | Hapi's `route.options.auth`. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionsauth) for more information. By default, this option is not set, i.e., inheriting auth settings from Hapi's `server.options.routes.auth`. |
+| `cache`     | `{ privacy: 'public', expiresIn: 60 * 60 * 1000 } // one hour` | Hapi's `route.options.cache` to be assigned to the static documentation page. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionscache) for more information. |
+| `auth`      |  - | Hapi's `route.options.auth` to be assigned to the static documentation page. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionsauth) for more information. By default, this option is not set, i.e., inheriting auth settings from Hapi's `server.options.routes.auth`. |
+
+## Limitations
+
+Bootprint does some serious file operations.
+This is the reason why this plugin is pre-compiling its static documentation upfront at server startup time.
+The request to `/documentation.html` later on is simply streaming out that documentation from file.
+As a consequence, this plugin is not able to pull `/swagger.json` if this endpoint is protected.
