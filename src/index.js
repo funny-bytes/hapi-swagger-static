@@ -32,9 +32,11 @@ const createHtml = async (bootprintOptions) => {
 
 const register = async (server, {
   path: route = '/documentation.html',
+  swaggerEndpoint = '/swagger.json',
   bootprint: bootprintOptions = {},
   cache = { privacy: 'public', expiresIn: 60 * 60 * 1000 }, // one hour
   auth, // if undefined, inheriting auth settings from server.options.routes.auth
+  headers = {},
 }) => {
   // Provide endpoint serving html from file
   server.route({
@@ -54,7 +56,8 @@ const register = async (server, {
   // Pre-compile static html page at server startup
   try {
     const { payload: swaggerJson } = await server.inject({
-      url: '/swagger.json',
+      url: swaggerEndpoint,
+      headers,
     });
     await writeFile(fileSwaggerJson, swaggerJson);
     await createHtml(bootprintOptions);
