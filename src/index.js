@@ -55,13 +55,17 @@ const register = async (server, {
   });
   // Pre-compile static html page at server startup
   try {
-    const { payload: swaggerJson } = await server.inject({
+    const { payload, statusCode } = await server.inject({
       url: swaggerEndpoint,
       headers,
     });
-    await writeFile(fileSwaggerJson, swaggerJson);
-    await createHtml(bootprintOptions);
-    server.log(['info'], 'static swagger documentation successfully pre-compiled');
+    if (statusCode === 200) {
+      await writeFile(fileSwaggerJson, payload);
+      await createHtml(bootprintOptions);
+      server.log(['info'], 'static swagger documentation successfully pre-compiled');
+    } else {
+      server.log(['error'], `error requesting ${swaggerEndpoint}: http ${statusCode}`);
+    }
   } catch (error) {
     server.log(['error'], error);
   }
