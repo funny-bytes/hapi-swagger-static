@@ -35,6 +35,7 @@ async function setup({ pluginOptions = {} }) {
   await server.register({
     plugin: HapiSwagger,
     options: {
+      jsonPath: pluginOptions.swaggerEndpoint || '/swagger.json',
       info: {
         title: 'API Documentation 4711',
       },
@@ -154,6 +155,34 @@ describe('hapi-swagger-static with specific `cache` option', async () => {
         expect(headers).to.have.property('cache-control');
         expect(headers['cache-control']).to.contain('max-age=86400');
         expect(headers['cache-control']).to.contain('public');
+      }));
+});
+
+describe('hapi-swagger-static with specific `swaggerEndpoint` option', async () => {
+  let server;
+
+  beforeEach(async () => {
+    server = await setup({
+      pluginOptions: { swaggerEndpoint: '/swaggerBLA.json' },
+    });
+  });
+
+  afterEach(async () => {
+    await server.stop();
+  });
+
+  it('should create /documentation.html correctly', () =>
+    server
+      .inject({
+        url: '/documentation.html',
+      })
+      .should.be.fulfilled.then((response) => {
+        const { statusCode, payload } = response;
+        expect(statusCode).to.be.equal(200);
+        expect(payload).to.contain('<html>');
+        expect(payload).to.contain('<!DOCTYPE html>');
+        expect(payload).to.contain('<title>API Documentation 4711</title>');
+        expect(payload).to.contain('/test4711');
       }));
 });
 
