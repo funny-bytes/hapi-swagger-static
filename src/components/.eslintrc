@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "airbnb"
+  ],
+  "env": {
+    "es6": true,
+    "node": true,
+    "jasmine": true,
+    "mocha": true
+    },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ]
+}

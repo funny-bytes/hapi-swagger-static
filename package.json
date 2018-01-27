@@ -22,7 +22,11 @@
     "test": "NODE_ENV=test mocha --recursive --timeout 10000 test",
     "cover": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive --timeout 10000 test",
     "coveralls": "npm run cover && nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
-    "preversion": "npm run lint && npm test"
+    "preversion": "npm run lint && npm test",
+    "dev": "npm-run-all --parallel watch:*",
+    "watch:server": "nodemon -e js,html --ignore public/ --watch src src/server.js",
+    "watch:jsx": "babel --plugins transform-react-jsx --watch -d . ./src/**/*.jsx",
+    "postinstall": "babel --plugins transform-react-jsx -d . ./src/**/*.jsx"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -32,28 +36,34 @@
     "hapi-swagger": ">=9.x.x"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.1",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
     "coveralls": "^3.0.0",
     "eslint": "^4.16.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-react": "^7.6.0",
     "eslint-plugin-should-promised": "^2.0.0",
     "hapi": "^17.2.0",
     "hapi-swagger": "^9.0.2",
     "inert": "^5.1.0",
     "mocha": "^5.0.0",
+    "nodemon": "^1.14.11",
+    "npm-run-all": "^4.1.2",
     "nyc": "^11.4.1",
-    "sinon": "^4.2.0",
+    "sinon": "^4.2.2",
     "sinon-chai": "^2.14.0",
     "vision": "^5.3.1"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "boom": "^7.1.1",
-    "bootprint": "^1.0.2",
-    "bootprint-openapi": "^1.1.0",
-    "html-inline": "^1.2.0",
-    "tmp-promise": "^1.0.4"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "swagger-parser": "^4.0.2"
   }
 }
