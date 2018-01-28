@@ -1,5 +1,5 @@
 const React = require('react');
-const ListOfCode = require('./ListOfCode');
+const Codes = require('./Codes');
 const Html = require('./Html');
 const SwaggerPaths = require('./SwaggerPaths');
 const SwaggerDefinitions = require('./SwaggerDefinitions');
@@ -11,12 +11,12 @@ const Swagger = ({ api }) => (
     <div>Version: <code>{api.info.version}</code></div>
     <div>Host: <code>{api.host}</code></div>
     <div>Base Path: <code>{api.basePath}</code></div>
+    <Codes label="Schemes:" list={api.schemes} />
 
     <Html content={api.info.description} />
 
-    <ListOfCode label="The transfer protocols of the API (schemes)" list={api.schemes} />
-    <ListOfCode label="The MIME types the APIs can consume" list={api.consumes} />
-    <ListOfCode label="The MIME types the APIs can produce" list={api.produces} />
+    <Codes label="The MIME types the APIs can consume:" list={api.consumes} />
+    <Codes label="The MIME types the APIs can produce:" list={api.produces} />
 
     <h2>Paths</h2>
     <SwaggerPaths paths={api.paths} />
