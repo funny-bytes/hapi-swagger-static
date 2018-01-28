@@ -1,7 +1,8 @@
 const Boom = require('boom');
 const SwaggerParser = require('swagger-parser');
 const ReactDomServer = require('react-dom/server');
-const SwaggerComponent = require('./components/SwaggerComponent');
+const Swagger = require('./components/Swagger');
+const preprocessor = require('./preprocessor');
 const pkg = require('../package.json');
 
 const register = async (server, {
@@ -29,8 +30,9 @@ const register = async (server, {
             },
           },
         });
-        const component = SwaggerComponent({ api });
-        const html = ReactDomServer.renderToStaticMarkup(component);
+        const html = ReactDomServer.renderToStaticMarkup(Swagger({
+          api: await preprocessor(api),
+        }));
         return h.response(html).type('text/html').charset('utf-8');
       } catch (error) {
         request.log(['error'], error);

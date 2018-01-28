@@ -2,7 +2,8 @@ const Boom = require('boom');
 const Hapi = require('hapi');
 const SwaggerParser = require('swagger-parser');
 const ReactDomServer = require('react-dom/server');
-const SwaggerComponent = require('./components/SwaggerComponent');
+const Swagger = require('./components/Swagger');
+const preprocessor = require('./preprocessor');
 
 const server = new Hapi.Server({
   port: 4000,
@@ -15,7 +16,9 @@ server.route({
   path: '/test',
   handler: async (request, h) => {
     try {
-      const api = await parser.parse('http://localhost:3000/swagger.json', {
+      const uri = 'https://raw.githubusercontent.com/swagger-api/swagger-codegen/master/modules/swagger-codegen/src/test/resources/2_0/petstore.json';
+      // const uri = 'http://localhost:3000/swagger.json';
+      const api = await parser.parse(uri, {
         resolve: {
           file: false, // don't resolve local file references
           http: {
@@ -27,11 +30,12 @@ server.route({
           },
         },
       });
-      const component = SwaggerComponent({ api });
-      const html = ReactDomServer.renderToStaticMarkup(component);
+      const html = ReactDomServer.renderToStaticMarkup(Swagger({
+        api: await preprocessor(api),
+      }));
       return h.response(html).type('text/html').charset('utf-8');
     } catch (error) {
-      request.log(['error'], error);
+      console.error(error); // eslint-disable-line no-console
       return Boom.badImplementation();
     }
   },
