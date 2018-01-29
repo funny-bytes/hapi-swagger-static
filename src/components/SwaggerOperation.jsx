@@ -1,13 +1,20 @@
 const React = require('react');
 const slugify = require('slugify');
+const {
+  Card, CardHeader, CardText, CardBody, CardTitle, CardSubtitle,
+} = require('reactstrap');
 
 const SwaggerOperation = ({ operation, path, details }) => {
-  const slug = slugify(`${operation}${path}`);
+  const slug = slugify(`operation-${operation}-${path}`);
   const method = operation.toUpperCase();
   return (
     <div>
-      <h3 key={slug}>{method}{' '}{path}</h3>
-      {/* todo */}
+      <Card key={slug}>
+        <CardHeader>{method}{' '}{path}</CardHeader>
+        <CardBody>
+          <CardText>{details.summary}</CardText>
+        </CardBody>
+      </Card>
     </div>
   );
 };

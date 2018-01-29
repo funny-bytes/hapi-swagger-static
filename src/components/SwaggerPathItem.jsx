@@ -7,7 +7,7 @@ const SwaggerPathItem = ({ path, item }) => {
     <div>
       { operations
           .filter(op => op.match(/^(get)|(put)|(post)|(delete)|(options)|(head)|(patch)|$/))
-          .map(op => <SwaggerOperation path={path} operation={op} item={item[operations]} />)
+          .map(op => <SwaggerOperation path={path} operation={op} details={item[op]} />)
       }
     </div>
   );
