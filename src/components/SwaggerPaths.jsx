@@ -1,11 +1,14 @@
 const React = require('react');
-const SwaggerPath = require('./SwaggerPath');
+const SwaggerPathItem = require('./SwaggerPathItem');
 
 const SwaggerPaths = ({ paths }) => {
   const keys = Object.keys(paths);
   if (!keys || !keys.length) return '';
+  // TODO: support `^x-` fields
   return (
-    keys.map(key => <SwaggerPath title={key} path={paths[key]} />)
+    keys
+      .filter(path => path.match(/^\//))
+      .map(path => <SwaggerPathItem path={path} item={paths[path]} />)
   );
 };
 
