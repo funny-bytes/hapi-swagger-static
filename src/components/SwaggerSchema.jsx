@@ -3,7 +3,7 @@ const slugify = require('slugify');
 
 const SwaggerSchema = ({ title, schema }) => (
   <div>
-    <h3 key={slugify(title)}><code>{title}</code></h3>
+    <h3 key={slugify(title)}>{title}</h3>
     {/* todo */}
   </div>
 );

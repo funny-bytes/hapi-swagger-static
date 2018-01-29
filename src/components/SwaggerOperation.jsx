@@ -6,7 +6,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
   const method = operation.toUpperCase();
   return (
     <div>
-      <h3 key={slug}><code>{method}{' '}{path}</code></h3>
+      <h3 key={slug}>{method}{' '}{path}</h3>
       {/* todo */}
     </div>
   );

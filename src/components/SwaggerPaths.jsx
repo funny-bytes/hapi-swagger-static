@@ -6,9 +6,13 @@ const SwaggerPaths = ({ paths }) => {
   if (!keys || !keys.length) return '';
   // TODO: support `^x-` fields
   return (
-    keys
-      .filter(path => path.match(/^\//))
-      .map(path => <SwaggerPathItem path={path} item={paths[path]} />)
+    <div>
+      <h2>Paths</h2>
+      { keys
+        .filter(path => path.match(/^\//))
+        .map(path => <SwaggerPathItem path={path} item={paths[path]} />)
+      }
+    </div>
   );
 };
 

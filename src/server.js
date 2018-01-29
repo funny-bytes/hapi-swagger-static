@@ -2,8 +2,13 @@ const Boom = require('boom');
 const Hapi = require('hapi');
 const SwaggerParser = require('swagger-parser');
 const ReactDomServer = require('react-dom/server');
+const util = require('util');
+const fs = require('fs');
+const path = require('path');
 const Swagger = require('./components/Swagger');
 const preprocessor = require('./preprocessor');
+
+const readFile = util.promisify(fs.readFile);
 
 const server = new Hapi.Server({
   port: 4000,
@@ -33,7 +38,11 @@ server.route({
       const html = ReactDomServer.renderToStaticMarkup(Swagger({
         api: await preprocessor(api),
       }));
-      return h.response(html).type('text/html').charset('utf-8');
+      const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
+      const page = frame
+        .replace(/\{\{content\}\}/, html)
+        .replace(/\{\{title\}\}/, api.info.title);
+      return h.response(page).type('text/html').charset('utf-8');
     } catch (error) {
       console.error(error); // eslint-disable-line no-console
       return Boom.badImplementation();

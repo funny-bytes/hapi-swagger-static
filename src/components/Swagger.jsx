@@ -18,10 +18,8 @@ const Swagger = ({ api }) => (
     <Codes label="The MIME types the APIs can consume:" list={api.consumes} />
     <Codes label="The MIME types the APIs can produce:" list={api.produces} />
 
-    <h2>Paths</h2>
     <SwaggerPaths paths={api.paths} />
 
-    <h2>Definitions</h2>
     <SwaggerDefinitions definitions={api.definitions} />
 
   </div>

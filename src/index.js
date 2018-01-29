@@ -1,9 +1,14 @@
 const Boom = require('boom');
 const SwaggerParser = require('swagger-parser');
 const ReactDomServer = require('react-dom/server');
+const util = require('util');
+const fs = require('fs');
+const path = require('path');
 const Swagger = require('./components/Swagger');
 const preprocessor = require('./preprocessor');
 const pkg = require('../package.json');
+
+const readFile = util.promisify(fs.readFile);
 
 const register = async (server, {
   path: route = '/documentation.html',
@@ -33,7 +38,11 @@ const register = async (server, {
         const html = ReactDomServer.renderToStaticMarkup(Swagger({
           api: await preprocessor(api),
         }));
-        return h.response(html).type('text/html').charset('utf-8');
+        const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
+        const page = frame
+          .replace(/\{\{content\}\}/, html)
+          .replace(/\{\{title\}\}/, api.info.title);
+        return h.response(page).type('text/html').charset('utf-8');
       } catch (error) {
         request.log(['error'], error);
         return Boom.badImplementation();
