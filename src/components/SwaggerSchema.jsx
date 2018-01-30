@@ -9,8 +9,8 @@ const SwaggerSchema = ({ title, schema }) => {
   return (
     <div>
       <Card key={slug}>
-        <CardHeader>{title}</CardHeader>
         <CardBody>
+          <CardTitle>{title}</CardTitle>
           {/* todo */}
         </CardBody>
       </Card>
