@@ -6,7 +6,6 @@ const util = require('util');
 const fs = require('fs');
 const path = require('path');
 const Swagger = require('./components/Swagger');
-const preprocessor = require('./preprocessor');
 
 const readFile = util.promisify(fs.readFile);
 
@@ -35,9 +34,7 @@ server.route({
           },
         },
       });
-      const html = ReactDomServer.renderToStaticMarkup(Swagger({
-        api: await preprocessor(api),
-      }));
+      const html = ReactDomServer.renderToStaticMarkup(Swagger({ api }));
       const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
       const page = frame
         .replace(/\{\{content\}\}/, html)
