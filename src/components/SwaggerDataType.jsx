@@ -1,4 +1,5 @@
 const React = require('react');
+const decamelize = require('decamelize');
 
 const SwaggerDataType = (type) => {
   const props = [
@@ -30,7 +31,7 @@ const SwaggerDataType = (type) => {
         } else if (prop === 'default') {
           label = 'default value';
         } else {
-          label = prop;
+          label = decamelize(prop, ' ');
         }
         return (
           <span>{i ? ', ' : ''}{label}{' '}{value}</span>

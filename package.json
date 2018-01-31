@@ -63,6 +63,7 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "boom": "^7.1.1",
+    "decamelize": "^2.0.0",
     "github-flavored-markdown": "^1.0.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

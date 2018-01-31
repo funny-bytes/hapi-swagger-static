@@ -18,7 +18,7 @@ const SwaggerParameter = ({ parameter }) => {
       </div>
       { parameter.items &&
         <div>
-          {'items '}<SwaggerDataType {...parameter.items} />
+          {'item '}<SwaggerDataType {...parameter.items} />
         </div>
       }
       { description &&
