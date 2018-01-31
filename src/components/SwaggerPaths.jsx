@@ -2,8 +2,9 @@ const React = require('react');
 const SwaggerPathItem = require('./SwaggerPathItem');
 
 const SwaggerPaths = ({ paths }) => {
+  if (!paths) return '';
   const keys = Object.keys(paths);
-  if (!keys || !keys.length) return '';
+  if (!keys.length) return '';
   // TODO: support `^x-` fields
   return (
     <div>

@@ -30,7 +30,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
           <Codes label="Consumes:" list={consumes} showIfEmpty valueIfEmpty="none" />
           <Codes label="Produces:" list={produces} showIfEmpty valueIfEmpty="none" />
           <SwaggerParameters parameters={parameters} />
-          <SwaggerResponses reponses={responses} />
+          <SwaggerResponses responses={responses} />
         </CardBody>
       </Card>
     </div>
