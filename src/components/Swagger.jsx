@@ -1,6 +1,6 @@
 const React = require('react');
 const Codes = require('./Codes');
-const Markdown = require('./Markdown');
+const Description = require('./Description');
 const SwaggerPaths = require('./SwaggerPaths');
 const SwaggerDefinitions = require('./SwaggerDefinitions');
 
@@ -8,18 +8,22 @@ const Swagger = ({ api }) => {
   if (api.swagger !== '2.0') {
     throw new Error(`unsupported swagger version: ${api.swagger}`);
   }
+  const {
+    info, host, basePath, schemes, consumes, produces, paths, definitions,
+  } = api;
+  const { title, description, version } = info;
   return (
     <div>
-      <h1>{api.info.title}</h1>
-      <Markdown content={api.info.description} />
-      <div>Version: <code>{api.info.version}</code></div>
-      <div>Host: <code>{api.host}</code></div>
-      <div>Base Path: <code>{api.basePath}</code></div>
-      <Codes label="Schemes:" list={api.schemes} />
-      <Codes label="Consumes:" list={api.consumes} />
-      <Codes label="Produces:" list={api.produces} />
-      <SwaggerPaths api={api} paths={api.paths} />
-      <SwaggerDefinitions api={api} definitions={api.definitions} />
+      <h1>{title}</h1>
+      <Description gfm={description} />
+      <div>Version: <code>{version}</code></div>
+      <div>Host: <code>{host}</code></div>
+      <div>Base Path: <code>{basePath}</code></div>
+      <Codes label="Schemes:" list={schemes} />
+      <Codes label="Consumes:" list={consumes} />
+      <Codes label="Produces:" list={produces} />
+      <SwaggerPaths paths={paths} />
+      <SwaggerDefinitions definitions={definitions} />
     </div>
   );
 };

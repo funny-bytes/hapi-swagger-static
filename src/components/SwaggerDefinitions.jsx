@@ -1,5 +1,5 @@
 const React = require('react');
-const SwaggerSchema = require('./SwaggerSchema');
+const SwaggerDefinition = require('./SwaggerDefinition');
 
 const SwaggerDefinitions = ({ definitions }) => {
   const keys = Object.keys(definitions);
@@ -8,7 +8,7 @@ const SwaggerDefinitions = ({ definitions }) => {
     <div>
       <h2>Schema definitions</h2>
       { keys
-          .map(key => <SwaggerSchema name={key} schema={definitions[key]} />)
+          .map(key => <SwaggerDefinition name={key} schema={definitions[key]} />)
       }
     </div>
   );

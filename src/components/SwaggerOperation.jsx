@@ -5,12 +5,15 @@ const {
 } = require('reactstrap');
 const SwaggerParameters = require('./SwaggerParameters');
 const SwaggerResponses = require('./SwaggerResponses');
-const Markdown = require('./Markdown');
+const Description = require('./Description');
 const Codes = require('./Codes');
 
 const SwaggerOperation = ({ operation, path, details }) => {
   const slug = slugify(`operation-${operation}-${path}`);
   const method = operation.toUpperCase();
+  const {
+    summary, description, schemes, consumes, produces, parameters, responses,
+  } = details;
   return (
     <div>
       <Card key={slug}>
@@ -19,32 +22,15 @@ const SwaggerOperation = ({ operation, path, details }) => {
             {method}{' '}{path}{' '}
             { details.deprecated && <Badge color="danger">deprecated</Badge> }
           </CardTitle>
-          { details.summary &&
-            <CardSubtitle>{details.summary}</CardSubtitle>
-          }
+          { summary && <CardSubtitle>{summary}</CardSubtitle> }
         </CardHeader>
         <CardBody>
-          { details.description &&
-            <Markdown content={details.description} />
-          }
-          <Codes
-            label="Schemes:"
-            list={details.schemes}
-          />
-          <Codes
-            label="Consumes:"
-            list={details.consumes}
-            showIfEmpty
-            valueIfEmpty="none"
-          />
-          <Codes
-            label="Produces:"
-            list={details.produces}
-            showIfEmpty
-            valueIfEmpty="none"
-          />
-          <SwaggerParameters parameters={details.parameters} />
-          <SwaggerResponses reponses={details.responses} />
+          { description && <Description gfm={description} /> }
+          <Codes label="Schemes:" list={schemes} />
+          <Codes label="Consumes:" list={consumes} showIfEmpty valueIfEmpty="none" />
+          <Codes label="Produces:" list={produces} showIfEmpty valueIfEmpty="none" />
+          <SwaggerParameters parameters={parameters} />
+          <SwaggerResponses reponses={responses} />
         </CardBody>
       </Card>
     </div>

@@ -5,6 +5,7 @@ const SwaggerResponses = ({ responses }) => {
   return (
     <div>
       <h4>Responses</h4>
+      {/* TODO */}
     </div>
   );
 };

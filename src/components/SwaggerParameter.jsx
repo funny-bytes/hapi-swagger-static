@@ -1,6 +1,6 @@
 const React = require('react');
 const { Badge } = require('reactstrap');
-const Markdown = require('./Markdown');
+const Description = require('./Description');
 const SwaggerDataType = require('./SwaggerDataType');
 
 const SwaggerParameter = ({ parameter }) => {
@@ -10,19 +10,14 @@ const SwaggerParameter = ({ parameter }) => {
   return (
     <div>
       <h5>
-        {name}{' '}({location}){' '}
+        {name}{' '}
+        { location && `(${location})` }{' '}
         { required && <Badge color="secondary">required</Badge> }
       </h5>
-      <div>
-        <SwaggerDataType {...parameter} />
-      </div>
+      { description && <Description gfm={description} /> }
+      <SwaggerDataType {...parameter} />
       { parameter.items &&
-        <div>
-          {'item '}<SwaggerDataType {...parameter.items} />
-        </div>
-      }
-      { description &&
-        <Markdown content={description} />
+        <div>{'item '}<SwaggerDataType {...parameter.items} /></div>
       }
     </div>
   );

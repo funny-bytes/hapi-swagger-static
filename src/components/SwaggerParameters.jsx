@@ -1,6 +1,6 @@
 const React = require('react');
 const SwaggerParameter = require('./SwaggerParameter');
-const Markdown = require('./Markdown');
+const Description = require('./Description');
 
 const SwaggerParameters = ({ parameters }) => {
   if (!parameters || !parameters.length) return '';
@@ -20,9 +20,7 @@ const SwaggerParameters = ({ parameters }) => {
       { body &&
         <div>
           <h4>Request Body</h4>
-          { body.description &&
-            <Markdown content={body.description} />
-          }
+          { body.description && <Description gfm={body.description} /> }
           {/* TODO */}
         </div>
       }
