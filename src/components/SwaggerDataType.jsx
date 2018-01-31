@@ -9,7 +9,7 @@ const SwaggerDataType = (type) => {
   ];
   return (
     props
-      .filter(prop => type[prop] !== undefined && type[prop] !== null)
+      .filter(prop => type[prop] !== undefined)
       .map((prop, i) => {
         // value
         let value;

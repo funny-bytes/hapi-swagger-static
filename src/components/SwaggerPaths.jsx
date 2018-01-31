@@ -9,8 +9,8 @@ const SwaggerPaths = ({ paths }) => {
     <div>
       <h2>Paths</h2>
       { keys
-        .filter(path => path.match(/^\//))
-        .map(path => <SwaggerPathItem path={path} item={paths[path]} />)
+          .filter(path => path.match(/^\//))
+          .map(path => <SwaggerPathItem path={path} item={paths[path]} />)
       }
     </div>
   );
