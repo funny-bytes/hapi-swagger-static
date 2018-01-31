@@ -16,8 +16,8 @@ const Swagger = ({ api }) => {
       <div>Host: <code>{api.host}</code></div>
       <div>Base Path: <code>{api.basePath}</code></div>
       <Codes label="Schemes:" list={api.schemes} />
-      <Codes label="MIME types consumed:" list={api.consumes} />
-      <Codes label="MIME types produced:" list={api.produces} />
+      <Codes label="Consumes:" list={api.consumes} />
+      <Codes label="Produces:" list={api.produces} />
       <SwaggerPaths api={api} paths={api.paths} />
       <SwaggerDefinitions api={api} definitions={api.definitions} />
     </div>
