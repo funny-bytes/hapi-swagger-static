@@ -11,15 +11,15 @@ const Swagger = ({ api }) => {
   return (
     <div>
       <h1>{api.info.title}</h1>
+      <Markdown content={api.info.description} />
       <div>Version: <code>{api.info.version}</code></div>
       <div>Host: <code>{api.host}</code></div>
       <div>Base Path: <code>{api.basePath}</code></div>
       <Codes label="Schemes:" list={api.schemes} />
-      <Markdown content={api.info.description} />
-      <Codes label="The MIME types the APIs can consume:" list={api.consumes} />
-      <Codes label="The MIME types the APIs can produce:" list={api.produces} />
-      <SwaggerPaths paths={api.paths} />
-      <SwaggerDefinitions definitions={api.definitions} />
+      <Codes label="MIME types consumed:" list={api.consumes} />
+      <Codes label="MIME types produced:" list={api.produces} />
+      <SwaggerPaths api={api} paths={api.paths} />
+      <SwaggerDefinitions api={api} definitions={api.definitions} />
     </div>
   );
 };

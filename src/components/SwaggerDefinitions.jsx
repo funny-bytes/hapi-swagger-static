@@ -1,14 +1,14 @@
 const React = require('react');
 const SwaggerSchema = require('./SwaggerSchema');
 
-const SwaggerDefinitions = ({ definitions }) => {
+const SwaggerDefinitions = ({ api, definitions }) => {
   const keys = Object.keys(definitions);
   if (!keys || !keys.length) return '';
   return (
     <div>
       <h2>Schema definitions</h2>
       { keys
-          .map(key => <SwaggerSchema title={key} schema={definitions[key]} />)
+          .map(key => <SwaggerSchema title={key} schema={definitions[key]} api={api} />)
       }
     </div>
   );
