@@ -1,10 +1,11 @@
 const React = require('react');
 const { Badge } = require('reactstrap');
 const Markdown = require('./Markdown');
+const SwaggerDataType = require('./SwaggerDataType');
 
-const SwaggerParameter = ({ api, parameter }) => {
+const SwaggerParameter = ({ parameter }) => {
   const {
-    name, in: location, type: datatype, description, required,
+    name, in: location, description, required,
   } = parameter;
   return (
     <div>
@@ -12,11 +13,7 @@ const SwaggerParameter = ({ api, parameter }) => {
         {name}{' '}({location}){' '}
         { required && <Badge color="secondary">required</Badge> }
       </h5>
-      { (datatype && datatype !== 'body') &&
-        <div>
-          <code>{datatype}</code>
-        </div>
-      }
+      <SwaggerDataType {...parameter} />
       { description &&
         <Markdown content={description} />
       }
