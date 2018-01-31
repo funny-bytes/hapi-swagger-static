@@ -5,6 +5,7 @@ const {
 } = require('reactstrap');
 const SwaggerParameters = require('./SwaggerParameters');
 const SwaggerResponses = require('./SwaggerResponses');
+const SwaggerBody = require('./SwaggerBody');
 const Markdown = require('./Markdown');
 const Codes = require('./Codes');
 
@@ -46,6 +47,7 @@ const SwaggerOperation = ({
             valueIfEmpty="none"
           />
           <SwaggerParameters api={api} parameters={details.parameters} />
+          <SwaggerBody api={api} parameters={details.parameters} />
           <SwaggerResponses api={api} reponses={details.responses} />
         </CardBody>
       </Card>

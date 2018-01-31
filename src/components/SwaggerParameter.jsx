@@ -13,7 +13,14 @@ const SwaggerParameter = ({ parameter }) => {
         {name}{' '}({location}){' '}
         { required && <Badge color="secondary">required</Badge> }
       </h5>
-      <SwaggerDataType {...parameter} />
+      <div>
+        <SwaggerDataType {...parameter} />
+      </div>
+      { parameter.items &&
+        <div>
+          {'items '}<SwaggerDataType {...parameter.items} />
+        </div>
+      }
       { description &&
         <Markdown content={description} />
       }

@@ -4,13 +4,13 @@ const {
   Card, CardHeader, CardText, CardBody, CardTitle, CardSubtitle,
 } = require('reactstrap');
 
-const SwaggerSchema = ({ api, title, schema }) => {
-  const slug = slugify(`model-${title}`);
+const SwaggerSchema = ({ api, name, schema }) => {
+  const slug = slugify(`schema-${name}`);
   return (
     <div>
       <Card key={slug}>
         <CardHeader>
-          <CardTitle>{title}</CardTitle>
+          <CardTitle>{name}</CardTitle>
         </CardHeader>
         <CardBody>
           {/* todo */}

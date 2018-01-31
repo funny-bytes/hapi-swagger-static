@@ -8,7 +8,7 @@ const SwaggerDefinitions = ({ api, definitions }) => {
     <div>
       <h2>Schema definitions</h2>
       { keys
-          .map(key => <SwaggerSchema title={key} schema={definitions[key]} api={api} />)
+          .map(key => <SwaggerSchema name={key} schema={definitions[key]} api={api} />)
       }
     </div>
   );
