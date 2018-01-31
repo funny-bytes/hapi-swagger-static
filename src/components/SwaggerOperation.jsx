@@ -5,13 +5,10 @@ const {
 } = require('reactstrap');
 const SwaggerParameters = require('./SwaggerParameters');
 const SwaggerResponses = require('./SwaggerResponses');
-const SwaggerBody = require('./SwaggerBody');
 const Markdown = require('./Markdown');
 const Codes = require('./Codes');
 
-const SwaggerOperation = ({
-  api, operation, path, details,
-}) => {
+const SwaggerOperation = ({ operation, path, details }) => {
   const slug = slugify(`operation-${operation}-${path}`);
   const method = operation.toUpperCase();
   return (
@@ -36,19 +33,18 @@ const SwaggerOperation = ({
           />
           <Codes
             label="Consumes:"
-            list={details.consumes || api.consumes}
+            list={details.consumes}
             showIfEmpty
             valueIfEmpty="none"
           />
           <Codes
             label="Produces:"
-            list={details.produces || api.produces}
+            list={details.produces}
             showIfEmpty
             valueIfEmpty="none"
           />
-          <SwaggerParameters api={api} parameters={details.parameters} />
-          <SwaggerBody api={api} parameters={details.parameters} />
-          <SwaggerResponses api={api} reponses={details.responses} />
+          <SwaggerParameters parameters={details.parameters} />
+          <SwaggerResponses reponses={details.responses} />
         </CardBody>
       </Card>
     </div>

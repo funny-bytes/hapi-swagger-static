@@ -1,18 +1,30 @@
 const React = require('react');
 const SwaggerParameter = require('./SwaggerParameter');
+const Markdown = require('./Markdown');
 
-const SwaggerParameters = ({ api, parameters }) => {
+const SwaggerParameters = ({ parameters }) => {
   if (!parameters || !parameters.length) return '';
-  const selection = parameters
-    .filter(param => !param.$ref) // TODO "$ref" reference objects
-    .filter(param => param.in !== 'body'); // TODO operation body
-  if (!selection.length) return '';
+  const pars = parameters
+    .filter(par => !par.$ref) // TODO "$ref" reference objects
+    .filter(par => par.in !== 'body');
+  const body = parameters
+    .filter(par => par.in === 'body')[0];
   return (
     <div>
-      <hr />
-      <h4>Parameters</h4>
-      { selection
-        .map(param => <SwaggerParameter api={api} parameter={param} />)
+      { pars.length > 0 &&
+        <div>
+          <h4>Request Parameters</h4>
+          { pars.map(par => <SwaggerParameter parameter={par} />) }
+        </div>
+      }
+      { body &&
+        <div>
+          <h4>Request Body</h4>
+          { body.description &&
+            <Markdown content={body.description} />
+          }
+          {/* TODO */}
+        </div>
       }
     </div>
   );

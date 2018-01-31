@@ -1,10 +1,9 @@
 const React = require('react');
 // const SwaggerParameter = require('./SwaggerParameter');
 
-const SwaggerResponses = ({ api, responses }) => {
+const SwaggerResponses = ({ responses }) => {
   return (
     <div>
-      <hr />
       <h4>Responses</h4>
     </div>
   );

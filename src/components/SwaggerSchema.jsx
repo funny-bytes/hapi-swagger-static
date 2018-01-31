@@ -4,7 +4,7 @@ const {
   Card, CardHeader, CardText, CardBody, CardTitle, CardSubtitle,
 } = require('reactstrap');
 
-const SwaggerSchema = ({ api, name, schema }) => {
+const SwaggerSchema = ({ name, schema }) => {
   const slug = slugify(`schema-${name}`);
   return (
     <div>
