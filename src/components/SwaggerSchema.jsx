@@ -11,6 +11,7 @@ const SwaggerSchema = ({ schema }) => {
   // TODO: support `additionalProperties` in schema
   // TODO: support `allOf` in schema
   if (properties) { // && type === 'object'
+    schema.type = 'object'; // eslint-disable-line no-param-reassign
     const props = Object.keys(properties);
     return (
       <div>
@@ -29,6 +30,7 @@ const SwaggerSchema = ({ schema }) => {
       </div>
     );
   } else if (items) { // && type === 'array'
+    schema.type = 'array'; // eslint-disable-line no-param-reassign
     return (
       <div>
         { description && <Description gfm={description} /> }
