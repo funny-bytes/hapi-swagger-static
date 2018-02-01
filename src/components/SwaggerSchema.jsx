@@ -5,29 +5,30 @@ const SwaggerParameter = require('./SwaggerParameter');
 
 const SwaggerSchema = ({ schema }) => {
   const {
-    type, description, properties, items, required,
+    description, properties, items, required,
   } = schema;
   // TODO: support `$ref` references in schema
-  if (type === 'object') {
+  // TODO: support `additionalProperties` in schema
+  // TODO: support `allOf` in schema
+  if (properties) { // && type === 'object'
+    const props = Object.keys(properties);
     return (
       <div>
         { description && <Description gfm={description} /> }
         <SwaggerDataType {...schema} />
         <h4>Properties</h4>
         <div>{
-          Object
-            .keys(properties)
-            .map((prop) => {
-              const property = properties[prop];
-              property.name = prop;
-              property.required = (required || []).includes(prop);
-              return <SwaggerParameter parameter={property} />;
-            })
-          }
+          props.map((prop) => {
+            const property = properties[prop];
+            property.name = prop;
+            property.required = (required || []).includes(prop);
+            return <SwaggerParameter parameter={property} />;
+          })
+        }
         </div>
       </div>
     );
-  } else if (type === 'array') {
+  } else if (items) { // && type === 'array'
     return (
       <div>
         { description && <Description gfm={description} /> }
