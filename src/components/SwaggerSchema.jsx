@@ -5,11 +5,18 @@ const SwaggerParameter = require('./SwaggerParameter');
 
 const SwaggerSchema = ({ schema }) => {
   const {
-    description, properties, items, required,
+    description, properties, additionalProperties, allOf, items, required,
   } = schema;
-  // TODO: support `$ref` references in schema
-  // TODO: support `additionalProperties` in schema
-  // TODO: support `allOf` in schema
+  if (items) { // && type === 'array'
+    schema.type = 'array'; // eslint-disable-line no-param-reassign
+    return (
+      <div>
+        { description && <Description gfm={description} /> }
+        <SwaggerDataType {...schema} />
+        <div>{'item '}<SwaggerDataType {...items} /></div>
+      </div>
+    );
+  }
   if (properties) { // && type === 'object'
     schema.type = 'object'; // eslint-disable-line no-param-reassign
     const props = Object.keys(properties);
@@ -29,15 +36,13 @@ const SwaggerSchema = ({ schema }) => {
         </div>
       </div>
     );
-  } else if (items) { // && type === 'array'
-    schema.type = 'array'; // eslint-disable-line no-param-reassign
-    return (
-      <div>
-        { description && <Description gfm={description} /> }
-        <SwaggerDataType {...schema} />
-        <div>{'item '}<SwaggerDataType {...items} /></div>
-      </div>
-    );
+  }
+  if (additionalProperties) { // && type === 'object'
+    schema.type = 'object'; // eslint-disable-line no-param-reassign
+    return ''; // TODO: support `additionalProperties` in schema
+  }
+  if (allOf) {
+    return ''; // TODO: support `allOf` in schema
   }
   return (
     <div>

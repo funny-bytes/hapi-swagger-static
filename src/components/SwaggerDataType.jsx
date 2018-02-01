@@ -5,7 +5,7 @@ const SwaggerDataType = (type) => {
   const props = [
     'type', 'format', 'allowEmptyValue', 'collectionFormat', 'default',
     'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength',
-    'pattern', 'maxItems', 'minItems', 'uniqueItems', 'enum', 'multipleOf',
+    'pattern', 'maxItems', 'minItems', 'uniqueItems', 'enum', 'multipleOf', '$ref',
   ];
   return (
     props
@@ -21,6 +21,8 @@ const SwaggerDataType = (type) => {
           value = <code>null</code>;
         } else if (prop === 'enum') {
           value = <span>[{type.enum.map((val, j) => <span>{j ? ', ' : ''}<code>{val}</code></span>)}]</span>;
+        } else if (prop === '$ref') {
+          value = type[prop]; // TODO
         } else {
           value = <code>{type[prop]}</code>;
         }
