@@ -14,7 +14,7 @@ const SwaggerDefinition = ({ name, schema }) => {
           <CardTitle>{name}</CardTitle>
         </CardHeader>
         <CardBody>
-          <SwaggerSchema name={name} schema={schema} />
+          <SwaggerSchema schema={schema} />
         </CardBody>
       </Card>
     </div>

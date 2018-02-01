@@ -1,14 +1,13 @@
 const React = require('react');
-const slugify = require('slugify');
 const Description = require('./Description');
 const SwaggerDataType = require('./SwaggerDataType');
 const SwaggerParameter = require('./SwaggerParameter');
 
-const SwaggerSchema = ({ name, schema }) => {
-  const slug = slugify(`schema-${name}`);
+const SwaggerSchema = ({ schema }) => {
   const {
     type, description, properties, items, required,
   } = schema;
+  // TODO: support `$ref` references in schema
   if (type === 'object') {
     return (
       <div>

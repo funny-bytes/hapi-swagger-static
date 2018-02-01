@@ -1,11 +1,12 @@
 const React = require('react');
 const SwaggerParameter = require('./SwaggerParameter');
+const SwaggerSchema = require('./SwaggerSchema');
 const Description = require('./Description');
 
 const SwaggerParameters = ({ parameters }) => {
   if (!parameters || !parameters.length) return '';
   const pars = parameters
-    .filter(par => !par.$ref) // TODO "$ref" reference objects
+    .filter(par => !par.$ref) // TODO support "$ref" references in parameters
     .filter(par => par.in !== 'body');
   const body = parameters
     .filter(par => par.in === 'body')[0];
@@ -21,7 +22,7 @@ const SwaggerParameters = ({ parameters }) => {
         <div>
           <h4>Request Body</h4>
           { body.description && <Description gfm={body.description} /> }
-          {/* TODO */}
+          { body.schema && <SwaggerSchema schema={body.schema} /> }
         </div>
       }
     </div>

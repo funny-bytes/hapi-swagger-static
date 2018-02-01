@@ -5,7 +5,7 @@ const SwaggerPaths = ({ paths }) => {
   if (!paths) return '';
   const keys = Object.keys(paths);
   if (!keys.length) return '';
-  // TODO: support `^x-` fields
+  // TODO: support `^x-` fields in paths
   return (
     <div>
       <h2>Paths</h2>

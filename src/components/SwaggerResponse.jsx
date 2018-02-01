@@ -8,7 +8,7 @@ const SwaggerResponse = ({ status, response }) => {
     <div>
       <h5>{status}</h5>
       { description && <Description gfm={description} /> }
-      {/* TODO */}
+      { schema && <SwaggerSchema schema={schema} /> }
     </div>
   );
 };
