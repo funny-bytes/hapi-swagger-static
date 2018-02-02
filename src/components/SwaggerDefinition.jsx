@@ -1,17 +1,16 @@
 const React = require('react');
-const slugify = require('slugify');
 const {
   Card, CardHeader, CardBody, CardTitle,
 } = require('reactstrap');
 const SwaggerSchema = require('./SwaggerSchema');
 
 const SwaggerDefinition = ({ name, schema }) => {
-  const slug = slugify(`definition-${name}`);
+  const anchor = `/definitions/${name}`;
   return (
     <div>
-      <Card key={slug}>
+      <Card>
         <CardHeader>
-          <CardTitle>{name}</CardTitle>
+          <CardTitle><a name={anchor}>{name}</a></CardTitle>
         </CardHeader>
         <CardBody>
           <SwaggerSchema schema={schema} />

@@ -1,5 +1,6 @@
 const React = require('react');
 const decamelize = require('decamelize');
+const Link = require('./Link');
 
 const SwaggerDataType = (type) => {
   const props = [
@@ -11,6 +12,10 @@ const SwaggerDataType = (type) => {
     props
       .filter(prop => type[prop] !== undefined)
       .map((prop, i) => {
+        // $ref
+        if (prop === '$ref') {
+          return <span>{i ? ', ' : ''}type <Link href={type[prop]} /></span>;
+        }
         // value
         let value;
         if (type[prop] === true) {
@@ -21,8 +26,6 @@ const SwaggerDataType = (type) => {
           value = <code>null</code>;
         } else if (prop === 'enum') {
           value = <span>[{type.enum.map((val, j) => <span>{j ? ', ' : ''}<code>{val}</code></span>)}]</span>;
-        } else if (prop === '$ref') {
-          value = type[prop]; // TODO
         } else {
           value = <code>{type[prop]}</code>;
         }

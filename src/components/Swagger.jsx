@@ -1,6 +1,7 @@
 const React = require('react');
 const Codes = require('./Codes');
 const Description = require('./Description');
+const Summary = require('./Summary');
 const SwaggerPaths = require('./SwaggerPaths');
 const SwaggerDefinitions = require('./SwaggerDefinitions');
 
@@ -22,6 +23,7 @@ const Swagger = ({ api }) => {
       <Codes label="Schemes:" list={schemes} />
       <Codes label="Consumes:" list={consumes} />
       <Codes label="Produces:" list={produces} />
+      <Summary api={api} />
       <SwaggerPaths paths={paths} />
       <SwaggerDefinitions definitions={definitions} />
     </div>
