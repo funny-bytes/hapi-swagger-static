@@ -5,9 +5,10 @@ const {
 const SwaggerSchema = require('./SwaggerSchema');
 
 const SwaggerDefinition = ({ name, schema }) => {
+  const classname = 'hsw-swagger-definition';
   const anchor = `/definitions/${name}`;
   return (
-    <div>
+    <div className={classname}>
       <Card>
         <CardHeader>
           <CardTitle><a name={anchor}>{name}</a></CardTitle>

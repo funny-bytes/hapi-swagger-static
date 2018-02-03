@@ -3,9 +3,10 @@ const SwaggerSecurityScheme = require('./SwaggerSecurityScheme');
 const Description = require('./Description');
 
 const SwaggerSecurityDefinitions = ({ securityDefinitions }) => {
+  const classname = 'hsw-swagger-security-definitions';
   if (!securityDefinitions) return '';
   return (
-    <div>
+    <div className={classname}>
       <h2>Security Definitions</h2>
       <Description format="text">
         The security schemes available to be used in the specification.

@@ -4,7 +4,7 @@ const ReactDomServer = require('react-dom/server');
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
-const Swagger = require('./components/Swagger');
+const Api = require('./components/Api');
 const pkg = require('../package.json');
 
 const readFile = util.promisify(fs.readFile);
@@ -34,7 +34,7 @@ const register = async (server, {
             },
           },
         });
-        const html = ReactDomServer.renderToStaticMarkup(Swagger({ api }));
+        const html = ReactDomServer.renderToStaticMarkup(Api({ api }));
         const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
         const page = frame
           .replace(/\{\{content\}\}/, html)

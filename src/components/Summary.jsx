@@ -1,6 +1,7 @@
 const React = require('react');
 
 const Summary = ({ api }) => {
+  const classname = 'hsw-summary';
   const endpoints = [];
   Object.entries(api.paths).forEach(([path, operations]) => {
     Object.entries(operations).forEach(([operation, { summary }]) => {
@@ -13,7 +14,7 @@ const Summary = ({ api }) => {
     });
   });
   return (
-    <div>
+    <div className={classname}>
       <h2>Summary</h2>
       { endpoints
           .map(({

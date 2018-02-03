@@ -9,13 +9,14 @@ const Description = require('./Description');
 const Codes = require('./Codes');
 
 const SwaggerOperation = ({ operation, path, details }) => {
+  const classname = 'hsw-swagger-operation';
   const anchor = `/operations/${operation}/${path}`;
   const method = operation.toUpperCase();
   const {
     summary, description, schemes, consumes, produces, parameters, responses, security,
   } = details;
   return (
-    <div>
+    <div className={classname}>
       <Card>
         <CardHeader>
           <CardTitle>

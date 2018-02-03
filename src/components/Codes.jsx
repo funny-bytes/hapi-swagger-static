@@ -1,15 +1,14 @@
 const React = require('react');
 const slugify = require('slugify');
 
-const Codes = ({
-  codes, labelIfEmpty,
-}) => {
+const Codes = ({ codes, labelIfEmpty }) => {
+  const classname = 'hsw-codes';
   if (!codes) return '';
   if (!codes.length) {
-    return labelIfEmpty ? <span>{labelIfEmpty}</span> : '';
+    return labelIfEmpty ? <span className={classname}>{labelIfEmpty}</span> : '';
   }
   return (
-    <span>
+    <span className={classname}>
       { codes.map((str, i) => <span>{i ? ', ' : ''}<code key={slugify(str)}>{str}</code></span>)}
     </span>
   );

@@ -3,9 +3,10 @@ const Codes = require('./Codes');
 const Description = require('./Description');
 
 const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
+  const classname = 'hsw-swagger-security-requirement';
   if (!security) return '';
   return (
-    <div>
+    <div className={classname}>
       { format === 'api' &&
         <div>
           <h2>Security</h2>

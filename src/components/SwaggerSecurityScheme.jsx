@@ -3,11 +3,12 @@ const Description = require('./Description');
 const Codes = require('./Codes');
 
 const SwaggerSecurityScheme = ({ securityScheme }) => {
+  const classname = 'hsw-swagger-security-scheme';
   const {
     type, description, name, in: location, flow, authorizationUrl, tokenUrl, scopes,
   } = securityScheme;
   return (
-    <div>
+    <div className={classname}>
       <h4>
         {name}{' '}
         { location && `(${location})` }

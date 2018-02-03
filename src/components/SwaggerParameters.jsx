@@ -4,6 +4,7 @@ const SwaggerSchema = require('./SwaggerSchema');
 const Description = require('./Description');
 
 const SwaggerParameters = ({ parameters }) => {
+  const classname = 'hsw-swagger-parameters';
   if (!parameters || !parameters.length) return '';
   const pars = parameters
     .filter(par => !par.$ref) // TODO support "$ref" references in parameters
@@ -11,7 +12,7 @@ const SwaggerParameters = ({ parameters }) => {
   const body = parameters
     .filter(par => par.in === 'body')[0];
   return (
-    <div>
+    <div className={classname}>
       { pars.length > 0 &&
         <div>
           <h4>Request Parameters</h4>

@@ -4,11 +4,12 @@ const Description = require('./Description');
 const SwaggerDataType = require('./SwaggerDataType');
 
 const SwaggerParameter = ({ parameter }) => {
+  const classname = 'hsw-swagger-parameter';
   const {
     name, in: location, description, required,
   } = parameter;
   return (
-    <div>
+    <div className={classname}>
       <h5>
         {name}{' '}
         { location && `(${location})` }{' '}

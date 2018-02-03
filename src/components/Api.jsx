@@ -7,7 +7,8 @@ const SwaggerDefinitions = require('./SwaggerDefinitions');
 const SwaggerSecurityDefinitions = require('./SwaggerSecurityDefinitions');
 const SwaggerSecurityRequirement = require('./SwaggerSecurityRequirement');
 
-const Swagger = ({ api }) => {
+const Api = ({ api }) => {
+  const classname = 'hsw-api';
   if (api.swagger !== '2.0') {
     throw new Error(`unsupported swagger version: ${api.swagger}`);
   }
@@ -17,7 +18,7 @@ const Swagger = ({ api }) => {
   } = api;
   const { title, description, version } = info;
   return (
-    <div>
+    <div className={classname}>
       <h1>{title}</h1>
       <Description format="gfm">{description}</Description>
       <div>version <code>{version}</code></div>
@@ -35,4 +36,4 @@ const Swagger = ({ api }) => {
   );
 };
 
-module.exports = Swagger;
+module.exports = Api;

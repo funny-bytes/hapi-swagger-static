@@ -2,9 +2,10 @@ const React = require('react');
 const SwaggerOperation = require('./SwaggerOperation');
 
 const SwaggerPathItem = ({ path, item }) => {
+  const classname = 'hsw-swagger-path-item';
   const operations = Object.keys(item);
   return (
-    <div>
+    <div className={classname}>
       { operations
           .filter(op => op.match(/^(get)|(put)|(post)|(delete)|(options)|(head)|(patch)|$/))
           .map(op => <SwaggerOperation path={path} operation={op} details={item[op]} />)
