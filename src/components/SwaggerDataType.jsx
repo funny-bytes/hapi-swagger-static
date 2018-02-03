@@ -3,10 +3,12 @@ const decamelize = require('decamelize');
 const Link = require('./Link');
 
 const SwaggerDataType = (type) => {
+  const extended = Object.keys(type).filter(key => key.match(/^x-/)); // e.g., `x-format`
   const props = [
     'type', 'format', 'allowEmptyValue', 'collectionFormat', 'default',
     'maximum', 'exclusiveMaximum', 'minimum', 'exclusiveMinimum', 'maxLength', 'minLength',
     'pattern', 'maxItems', 'minItems', 'uniqueItems', 'enum', 'multipleOf', '$ref',
+    ...extended,
   ];
   return (
     props
@@ -26,6 +28,8 @@ const SwaggerDataType = (type) => {
           value = <code>null</code>;
         } else if (prop === 'enum') {
           value = <span>[{type.enum.map((val, j) => <span>{j ? ', ' : ''}<code>{val}</code></span>)}]</span>;
+        } else if (prop.match(/^x-/)) {
+          value = <code>{JSON.stringify(type[prop])}</code>;
         } else {
           value = <code>{type[prop]}</code>;
         }
@@ -35,6 +39,8 @@ const SwaggerDataType = (type) => {
           label = 'allowed values';
         } else if (prop === 'default') {
           label = 'default value';
+        } else if (prop.match(/^x-/)) {
+          label = `extended ${decamelize(prop.substr(2), ' ')}`;
         } else {
           label = decamelize(prop, ' ');
         }
