@@ -10,8 +10,7 @@ const SwaggerSecurityScheme = ({ securityScheme }) => {
   return (
     <div className={classname}>
       <h4>
-        {name}{' '}
-        { location && `(${location})` }
+        {name}{ location && ` (${location})` }
       </h4>
       { description && <Description format="gfm">{description}</Description> }
       { type && <div>type <code>{type}</code></div> }

@@ -12,7 +12,7 @@ const SwaggerParameter = ({ parameter }) => {
     <div className={classname}>
       <h5>
         {name}{' '}
-        { location && `(${location})` }{' '}
+        { location && ` (${location}) ` }
         { required && <Badge color="secondary">required</Badge> }
       </h5>
       { description && <Description format="gfm">{description}</Description> }

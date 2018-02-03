@@ -19,7 +19,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
     <div className={classname}>
       <Card>
         <CardHeader>
-          <CardTitle>
+          <CardTitle tag="h3">
             <a name={anchor}>
               {method}{' '}{path}{' '}
               { details.deprecated && <Badge color="danger">deprecated</Badge> }
