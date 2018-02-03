@@ -21,12 +21,12 @@ const Api = ({ api }) => {
     <div className={classname}>
       <h1>{title}</h1>
       <Description format="gfm">{description}</Description>
-      <div>version <code>{version}</code></div>
-      <div>host <code>{host}</code></div>
-      <div>base path <code>{basePath}</code></div>
-      { schemes && <div>schemes <Codes codes={schemes} /></div> }
-      { consumes && <div>consumes <Codes codes={consumes} /></div> }
-      { produces && <div>produces <Codes codes={produces} /></div> }
+      <div>Version <code>{version}</code></div>
+      <div>Host <code>{host}</code></div>
+      <div>Base path <code>{basePath}</code></div>
+      { schemes && <div>Schemes <Codes codes={schemes} /></div> }
+      { consumes && <div>Consumes <Codes codes={consumes} /></div> }
+      { produces && <div>Produces <Codes codes={produces} /></div> }
       <Summary api={api} />
       <SwaggerSecurityDefinitions securityDefinitions={securityDefinitions} />
       <SwaggerSecurityRequirement security={security} />

@@ -14,8 +14,8 @@ const SwaggerSchema = ({ schema }) => {
     return (
       <div className={classname}>
         { description && <Description format="gfm">{description}</Description> }
-        <SwaggerDataType {...schema} />
-        <div>{'item '}<SwaggerDataType {...items} /></div>
+        <SwaggerDataType header="Type" {...schema} />
+        <SwaggerDataType header="Item type" {...items} />
       </div>
     );
   }
@@ -26,7 +26,7 @@ const SwaggerSchema = ({ schema }) => {
     return (
       <div className={classname}>
         { description && <Description format="gfm">{description}</Description> }
-        <SwaggerDataType {...schema} />
+        <SwaggerDataType header="Type" {...schema} />
         <h4>Properties</h4>
         <div>{
           props.map((prop) => {
@@ -53,7 +53,7 @@ const SwaggerSchema = ({ schema }) => {
   return (
     <div className={classname}>
       { description && <Description format="gfm">{description}</Description> }
-      <SwaggerDataType {...schema} />
+      <SwaggerDataType header="Type" {...schema} />
     </div>
   );
 };

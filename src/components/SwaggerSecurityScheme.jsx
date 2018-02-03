@@ -13,11 +13,11 @@ const SwaggerSecurityScheme = ({ securityScheme }) => {
         {name}{ location && ` (${location})` }
       </h4>
       { description && <Description format="gfm">{description}</Description> }
-      { type && <div>type <code>{type}</code></div> }
-      { flow && <div>flow <code>{flow}</code></div> }
-      { authorizationUrl && <div>authorization URL <code>{authorizationUrl}</code></div> }
-      { tokenUrl && <div>token URL <code>{tokenUrl}</code></div> }
-      { scopes && <div>scopes <Codes codes={Object.keys(scopes)} labelIfEmpty="none" /></div> }
+      { type && <div>Type <code>{type}</code></div> }
+      { flow && <div>Flow <code>{flow}</code></div> }
+      { authorizationUrl && <div>Authorization URL <code>{authorizationUrl}</code></div> }
+      { tokenUrl && <div>Token URL <code>{tokenUrl}</code></div> }
+      { scopes && <div>Scopes <Codes codes={Object.keys(scopes)} labelIfEmpty="none" /></div> }
     </div>
   );
 };

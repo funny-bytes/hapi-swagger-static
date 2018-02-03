@@ -16,9 +16,9 @@ const SwaggerParameter = ({ parameter }) => {
         { required && <Badge color="secondary">required</Badge> }
       </h5>
       { description && <Description format="gfm">{description}</Description> }
-      <SwaggerDataType {...parameter} />
+      <SwaggerDataType header="Type" {...parameter} />
       { parameter.items &&
-        <div>{'item '}<SwaggerDataType {...parameter.items} /></div>
+        <SwaggerDataType header="Item type" {...parameter.items} />
       }
     </div>
   );

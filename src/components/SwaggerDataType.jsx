@@ -11,14 +11,16 @@ const SwaggerDataType = (type) => {
     'pattern', 'maxItems', 'minItems', 'uniqueItems', 'enum', 'multipleOf', '$ref',
     ...extended,
   ];
+  const { header = '' } = type; // a contextual header string
   return (
-    <span className={classname}>
+    <div className={classname}>
+      {header}{' '}
       { props
           .filter(prop => type[prop] !== undefined)
           .map((prop, i) => {
             // $ref
             if (prop === '$ref') {
-              return <span>{i ? ', ' : ''}type <Link href={type[prop]} /></span>;
+              return <span>{i ? ', ' : ''}<Link href={type[prop]} /></span>;
             }
             // value
             let value;
@@ -37,7 +39,9 @@ const SwaggerDataType = (type) => {
             }
             // label
             let label;
-            if (prop === 'enum') {
+            if (prop === 'type') {
+              label = ''; // show contextual header instead
+            } else if (prop === 'enum') {
               label = 'allowed values';
             } else if (prop === 'default') {
               label = 'default value';
@@ -51,7 +55,7 @@ const SwaggerDataType = (type) => {
             );
           })
       }
-    </span>
+    </div>
   );
 };
 
