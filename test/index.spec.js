@@ -2,20 +2,10 @@ const Hapi = require('hapi');
 const HapiSwagger = require('hapi-swagger');
 const Inert = require('inert');
 const Vision = require('vision');
-const chai = require('chai');
-const chaiAsPromised = require('chai-as-promised');
 const fs = require('fs');
 const sinon = require('sinon');
-const sinonChai = require('sinon-chai');
 const HapiSwaggerStatic = require('../src/index');
-
-chai.use(chaiAsPromised);
-chai.use(sinonChai);
-
-global.chai = chai;
-global.sinon = sinon;
-global.expect = chai.expect;
-global.should = chai.should();
+require('./setupTests');
 
 async function setup({ pluginOptions = {} }) {
   const server = new Hapi.Server({
