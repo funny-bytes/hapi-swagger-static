@@ -14,6 +14,7 @@ const register = async (server, {
   swaggerEndpoint = '/swagger.json',
   cache = { privacy: 'public', expiresIn: 60 * 60 * 1000 }, // one hour
   auth, // if undefined, inheriting auth settings from server.options.routes.auth
+  headers: additionalHeaders = {},
 }) => {
   server.route({
     method: 'GET',
@@ -30,6 +31,7 @@ const register = async (server, {
               withCredentials: true, // include auth credentials when resolving HTTP references
               headers: {
                 authorization: request.headers.authorization, // forward
+                ...additionalHeaders,
               },
             },
           },

@@ -2,9 +2,9 @@
 
 Plugin for Hapi v17 providing a static html documentation page.
 It's a small companion plugin for `hapi-swagger` or `hapi-swaggered`
-utilizing `bootprint` and `bootprint-openapi`
-to create a static page from the `/swagger.json`.
+to create a static page from the `/swagger.json` endpoint.
 The static page is provided as route `/documentation.html` (can be renamed).
+It supports most of Swagger 2.0 / Open API 2.0.
 
 [![build status](https://img.shields.io/travis/frankthelen/hapi-swagger-static.svg)](http://travis-ci.org/frankthelen/hapi-swagger-static)
 [![Coverage Status](https://coveralls.io/repos/github/frankthelen/hapi-swagger-static/badge.svg?branch=master)](https://coveralls.io/github/frankthelen/hapi-swagger-static?branch=master)
@@ -63,13 +63,6 @@ The plugin provides the following options:
 |-------------|-------------|-------------|
 | `path`      | `/documentation.html` | The endpoint providing the static documentation page. |
 | `swaggerEndpoint` | '/swagger.json' | The endpoint to read the Swagger API specification from. |
-| `bootprint` | `{}` | Bootprint options as passed to `bootprint.merge()`. Please refer to the [Bootprint configuration options](https://github.com/bootprint/bootprint/blob/master/doc/config.md) for more information. |
 | `cache`     | `{ privacy: 'public', expiresIn: 60 * 60 * 1000 } // one hour` | Hapi's `route.options.cache` to be assigned to the static documentation endpoint. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionscache) for more information. |
 | `auth`      |  - | Hapi's `route.options.auth` to be assigned to the static documentation endpoint. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionsauth) for more information. By default, this option is not set, i.e., inheriting auth settings from Hapi's `server.options.routes.auth`. |
-| `headers` | `{}` | Any request headers for the request to the `/swagger.json` endpoint. |
-
-Bootprint does some serious file operations.
-This is why this plugin is pre-compiling its static documentation upfront at server startup time.
-The request to `/documentation.html` later on is simply streaming out that documentation from file.
-
-If you need to authenticate your `/swagger.json` endpoint, add the according headers with the `headers` option.
+| `headers` | `{}` | The request's `authorization` header is automatically forwarded to the `/swagger.json` endpoint. If you need any additional headers, add them through the `headers` option. |
