@@ -19,8 +19,8 @@ const Summary = ({ api }) => {
       { endpoints
           .map(({
             path, method, href, summary,
-          }) => (
-            <dl>
+          }, i) => (
+            <dl key={`summary-${i}`}>
               <dt><a href={href}>{method}{' '}{path}</a></dt>
               { summary && <dd>{summary}</dd> }
             </dl>

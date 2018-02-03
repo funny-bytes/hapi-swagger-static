@@ -20,7 +20,9 @@ const SwaggerDataType = (type) => {
           .map((prop, i) => {
             // $ref
             if (prop === '$ref') {
-              return <span>{i ? ', ' : ''}<Link href={type[prop]} /></span>;
+              return (
+                <span key={`datatype-${i}`}>{i ? ', ' : ''}<Link href={type[prop]} /></span>
+              );
             }
             // value
             let value;
@@ -31,7 +33,7 @@ const SwaggerDataType = (type) => {
             } else if (type[prop] === null) {
               value = <code>null</code>;
             } else if (prop === 'enum') {
-              value = <span>[{type.enum.map((val, j) => <span>{j ? ', ' : ''}<code>{val}</code></span>)}]</span>;
+              value = <span>[{type.enum.map((val, j) => <span key={`enum-${j}`}>{j ? ', ' : ''}<code>{val}</code></span>)}]</span>;
             } else if (prop.match(/^x-/)) {
               value = <code>{JSON.stringify(type[prop])}</code>;
             } else {
@@ -51,7 +53,7 @@ const SwaggerDataType = (type) => {
               label = decamelize(prop, ' ');
             }
             return (
-              <span>{i ? ', ' : ''}{label}{' '}{value}</span>
+              <span key={`datatype-${i}`}>{i ? ', ' : ''}{label}{' '}{value}</span>
             );
           })
       }

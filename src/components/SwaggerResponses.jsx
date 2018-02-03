@@ -10,7 +10,8 @@ const SwaggerResponses = ({ responses }) => {
     <div className={classname}>
       <h4>Responses</h4>
       { statusCodes
-          .map(status => <SwaggerResponse status={status} response={responses[status]} />)
+          .map((status, i) =>
+            <SwaggerResponse key={`response-${i}`} status={status} response={responses[status]} />)
       }
     </div>
   );

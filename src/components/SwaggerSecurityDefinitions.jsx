@@ -15,9 +15,9 @@ const SwaggerSecurityDefinitions = ({ securityDefinitions }) => {
       </Description>
       { Object
           .entries(securityDefinitions)
-          .map(([name, securityScheme]) => {
+          .map(([name, securityScheme], i) => {
             securityScheme.name = name; // eslint-disable-line no-param-reassign
-            return <SwaggerSecurityScheme securityScheme={securityScheme} />;
+            return <SwaggerSecurityScheme key={`scheme-${i}`} securityScheme={securityScheme} />;
           })
       }
     </div>

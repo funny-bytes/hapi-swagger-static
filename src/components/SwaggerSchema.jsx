@@ -29,11 +29,11 @@ const SwaggerSchema = ({ schema }) => {
         <SwaggerDataType header="Type" {...schema} />
         <h4>Properties</h4>
         <div>{
-          props.map((prop) => {
+          props.map((prop, i) => {
             const property = properties[prop];
             property.name = prop;
             property.required = (required || []).includes(prop);
-            return <SwaggerParameter parameter={property} />;
+            return <SwaggerParameter key={`prop-${i}`} parameter={property} />;
           })
         }
         </div>

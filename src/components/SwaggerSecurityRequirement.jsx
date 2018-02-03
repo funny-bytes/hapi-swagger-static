@@ -28,8 +28,8 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
           </Description>
         </div>
       }
-      { security.map(scheme => Object.entries(scheme).map(([name, scopes = []]) => (
-        <div>
+      { security.map(scheme => Object.entries(scheme).map(([name, scopes = []], i) => (
+        <div key={`scheme-${i}`}>
           <code>{name}</code>
           { scopes.length > 0 &&
             <span> with required scopes <Codes codes={scopes} /></span>

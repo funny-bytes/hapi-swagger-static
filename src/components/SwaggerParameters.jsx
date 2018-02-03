@@ -16,7 +16,7 @@ const SwaggerParameters = ({ parameters }) => {
       { pars.length > 0 &&
         <div>
           <h4>Request Parameters</h4>
-          { pars.map(par => <SwaggerParameter parameter={par} />) }
+          { pars.map((par, i) => <SwaggerParameter key={`parameter-${i}`} parameter={par} />) }
         </div>
       }
       { body &&
