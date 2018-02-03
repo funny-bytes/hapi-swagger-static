@@ -16,7 +16,14 @@ const Summary = ({ api }) => {
     <div>
       <h2>Summary</h2>
       { endpoints
-          .map(({ path, method, href }) => <div><a href={href}>{method}{' '}{path}</a></div>)
+          .map(({
+            path, method, href, summary,
+          }) => (
+            <dl>
+              <dt><a href={href}>{method}{' '}{path}</a></dt>
+              { summary && <dd>{summary}</dd> }
+            </dl>
+          ))
       }
     </div>
   );
