@@ -10,7 +10,7 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
         <div>
           <h2>Security</h2>
           <Description format="text">
-            The security schemes as applied for the API as a whole.
+            The security schemes applied for the API as a whole.
             If there are multiple schemes declared, they can be used alternatively
             (that is, there is a logical OR between the security requirements).
             Individual operations can override this definition.
@@ -21,7 +21,7 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
         <div>
           <h4>Security</h4>
           <Description format="text">
-            The security schemes as applied for this operation.
+            The security schemes applied for this operation.
             If there are multiple schemes declared, they can be used alternatively
             (that is, there is a logical OR between the security requirements).
           </Description>
@@ -30,7 +30,7 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
       { security.map(scheme => Object.entries(scheme).map(([name, scopes = []]) => (
         <div>
           <code>{name}</code>
-          { (scopes && scopes.length > 0) &&
+          { scopes.length > 0 &&
             <span> with required scopes <Codes codes={scopes} /></span>
           }
         </div>
