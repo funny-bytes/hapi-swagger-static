@@ -1,5 +1,6 @@
 const React = require('react');
 const Codes = require('./Codes');
+const Description = require('./Description');
 
 const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
   if (!security) return '';
@@ -8,22 +9,22 @@ const SwaggerSecurityRequirement = ({ security, format = 'api' }) => {
       { format === 'api' &&
         <div>
           <h2>Security</h2>
-          <p>
+          <Description format="text">
             The security schemes as applied for the API as a whole.
             If there are multiple schemes declared, they can be used alternatively
             (that is, there is a logical OR between the security requirements).
             Individual operations can override this definition.
-          </p>
+          </Description>
         </div>
       }
       { format === 'operation' &&
         <div>
           <h4>Security</h4>
-          <p>
+          <Description format="text">
             The security schemes as applied for this operation.
             If there are multiple schemes declared, they can be used alternatively
             (that is, there is a logical OR between the security requirements).
-          </p>
+          </Description>
         </div>
       }
       { security.map(scheme => Object.entries(scheme).map(([name, scopes = []]) => (

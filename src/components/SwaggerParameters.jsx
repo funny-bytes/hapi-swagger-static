@@ -21,7 +21,7 @@ const SwaggerParameters = ({ parameters }) => {
       { body &&
         <div>
           <h4>Request Body</h4>
-          { body.description && <Description gfm={body.description} /> }
+          { body.description && <Description format="gfm">{body.description}</Description> }
           { body.schema && <SwaggerSchema schema={body.schema} /> }
         </div>
       }

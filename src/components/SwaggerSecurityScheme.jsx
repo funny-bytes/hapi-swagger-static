@@ -12,7 +12,7 @@ const SwaggerSecurityScheme = ({ securityScheme }) => {
         {name}{' '}
         { location && `(${location})` }
       </h4>
-      { description && <Description gfm={description} /> }
+      { description && <Description format="gfm">{description}</Description> }
       { type && <div>Type <code>{type}</code></div> }
       { flow && <div>Flow <code>{flow}</code></div> }
       { authorizationUrl && <div>Authorization Url <code>{authorizationUrl}</code></div> }

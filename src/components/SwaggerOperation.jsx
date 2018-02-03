@@ -27,7 +27,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
           { summary && <CardSubtitle>{summary}</CardSubtitle> }
         </CardHeader>
         <CardBody>
-          { description && <Description gfm={description} /> }
+          { description && <Description format="gfm">{description}</Description> }
           { schemes && <div>Schemes <Codes codes={schemes} /></div> }
           { consumes && <div>Consumes <Codes codes={consumes} valueIfEmpty="none" /></div> }
           { produces && <div>Produces <Codes codes={produces} valueIfEmpty="none" /></div> }

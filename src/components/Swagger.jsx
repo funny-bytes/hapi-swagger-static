@@ -19,7 +19,7 @@ const Swagger = ({ api }) => {
   return (
     <div>
       <h1>{title}</h1>
-      <Description gfm={description} />
+      <Description format="gfm">{description}</Description>
       <div>Version <code>{version}</code></div>
       <div>Host <code>{host}</code></div>
       <div>Base Path <code>{basePath}</code></div>

@@ -1,5 +1,6 @@
 const React = require('react');
 const SwaggerPathItem = require('./SwaggerPathItem');
+const Description = require('./Description');
 
 const SwaggerPaths = ({ paths }) => {
   if (!paths) return '';
@@ -9,9 +10,9 @@ const SwaggerPaths = ({ paths }) => {
   return (
     <div>
       <h2>Paths</h2>
-      <p>
+      <Description format="text">
         The available paths and operations for the API.
-      </p>
+      </Description>
       { keys
           .filter(path => path.match(/^\//))
           .map(path => <SwaggerPathItem path={path} item={paths[path]} />)

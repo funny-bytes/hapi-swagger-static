@@ -12,7 +12,7 @@ const SwaggerSchema = ({ schema }) => {
     schema.type = 'array'; // eslint-disable-line no-param-reassign
     return (
       <div>
-        { description && <Description gfm={description} /> }
+        { description && <Description format="gfm">{description}</Description> }
         <SwaggerDataType {...schema} />
         <div>{'item '}<SwaggerDataType {...items} /></div>
       </div>
@@ -24,7 +24,7 @@ const SwaggerSchema = ({ schema }) => {
     const props = Object.keys(properties);
     return (
       <div>
-        { description && <Description gfm={description} /> }
+        { description && <Description format="gfm">{description}</Description> }
         <SwaggerDataType {...schema} />
         <h4>Properties</h4>
         <div>{
@@ -51,7 +51,7 @@ const SwaggerSchema = ({ schema }) => {
   // else -- including `$ref`
   return (
     <div>
-      { description && <Description gfm={description} /> }
+      { description && <Description format="gfm">{description}</Description> }
       <SwaggerDataType {...schema} />
     </div>
   );

@@ -1,5 +1,6 @@
 const React = require('react');
 const SwaggerDefinition = require('./SwaggerDefinition');
+const Description = require('./Description');
 
 const SwaggerDefinitions = ({ definitions }) => {
   if (!definitions) return '';
@@ -8,9 +9,9 @@ const SwaggerDefinitions = ({ definitions }) => {
   return (
     <div>
       <h2>Schema definitions</h2>
-      <p>
+      <Description format="text">
         The data types produced and consumed by the operations of the API.
-      </p>
+      </Description>
       { keys
           .map(key => <SwaggerDefinition name={key} schema={definitions[key]} />)
       }
