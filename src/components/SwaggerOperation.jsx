@@ -4,6 +4,7 @@ const {
 } = require('reactstrap');
 const SwaggerParameters = require('./SwaggerParameters');
 const SwaggerResponses = require('./SwaggerResponses');
+const SwaggerSecurityRequirement = require('./SwaggerSecurityRequirement');
 const Description = require('./Description');
 const Codes = require('./Codes');
 
@@ -11,7 +12,7 @@ const SwaggerOperation = ({ operation, path, details }) => {
   const anchor = `/operations/${operation}/${path}`;
   const method = operation.toUpperCase();
   const {
-    summary, description, schemes, consumes, produces, parameters, responses,
+    summary, description, schemes, consumes, produces, parameters, responses, security,
   } = details;
   return (
     <div>
@@ -27,11 +28,12 @@ const SwaggerOperation = ({ operation, path, details }) => {
         </CardHeader>
         <CardBody>
           { description && <Description gfm={description} /> }
-          <Codes label="Schemes:" list={schemes} />
-          <Codes label="Consumes:" list={consumes} showIfEmpty valueIfEmpty="none" />
-          <Codes label="Produces:" list={produces} showIfEmpty valueIfEmpty="none" />
+          { schemes && <div>Schemes <Codes codes={schemes} /></div> }
+          { consumes && <div>Consumes <Codes codes={consumes} valueIfEmpty="none" /></div> }
+          { produces && <div>Produces <Codes codes={produces} valueIfEmpty="none" /></div> }
           <SwaggerParameters parameters={parameters} />
           <SwaggerResponses responses={responses} />
+          <SwaggerSecurityRequirement security={security} format="operation" />
         </CardBody>
       </Card>
     </div>

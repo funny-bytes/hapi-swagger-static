@@ -2,16 +2,16 @@ const React = require('react');
 const slugify = require('slugify');
 
 const Codes = ({
-  label, list, showIfEmpty, valueIfEmpty,
+  codes, labelIfEmpty,
 }) => {
-  if (!list) return '';
-  if (!list.length && !showIfEmpty) return '';
+  if (!codes) return '';
+  if (!codes.length) {
+    return labelIfEmpty ? <span>{labelIfEmpty}</span> : '';
+  }
   return (
-    <div>
-      {label}{' '}
-      { list.map((str, i) => <span>{i ? ', ' : ''}<code key={slugify(str)}>{str}</code></span>)}
-      { (!list.length && valueIfEmpty) && { valueIfEmpty } }
-    </div>
+    <span>
+      { codes.map((str, i) => <span>{i ? ', ' : ''}<code key={slugify(str)}>{str}</code></span>)}
+    </span>
   );
 };
 

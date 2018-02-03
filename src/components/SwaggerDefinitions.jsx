@@ -8,6 +8,9 @@ const SwaggerDefinitions = ({ definitions }) => {
   return (
     <div>
       <h2>Schema definitions</h2>
+      <p>
+        The data types produced and consumed by the operations of the API.
+      </p>
       { keys
           .map(key => <SwaggerDefinition name={key} schema={definitions[key]} />)
       }

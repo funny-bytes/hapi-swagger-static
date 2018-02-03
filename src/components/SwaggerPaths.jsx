@@ -9,6 +9,9 @@ const SwaggerPaths = ({ paths }) => {
   return (
     <div>
       <h2>Paths</h2>
+      <p>
+        The available paths and operations for the API.
+      </p>
       { keys
           .filter(path => path.match(/^\//))
           .map(path => <SwaggerPathItem path={path} item={paths[path]} />)
