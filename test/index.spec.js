@@ -186,30 +186,6 @@ describe('hapi-swagger-static with specific `swaggerEndpoint` option', async () 
       }));
 });
 
-describe('hapi-swagger-static with error while reading html file', async () => {
-  let server;
-
-  beforeEach(async () => {
-    server = await setup({});
-    sinon.stub(fs, 'createReadStream').throws('Error');
-  });
-
-  afterEach(async () => {
-    await server.stop();
-    fs.createReadStream.restore();
-  });
-
-  it('should return http 500', () =>
-    server
-      .inject({
-        url: '/documentation.html',
-      })
-      .should.be.fulfilled.then((response) => {
-        const { statusCode } = response;
-        expect(statusCode).to.be.equal(500);
-      }));
-});
-
 describe('hapi-swagger-static with error while plugin registration', async () => {
   let server;
 

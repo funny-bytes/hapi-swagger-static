@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path ./.eslintignore",
-    "test": "NODE_ENV=test mocha --recursive --timeout 10000 test",
-    "cover": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive --timeout 10000 test",
+    "test": "NODE_ENV=test mocha --recursive test",
+    "cover": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive test",
     "coveralls": "npm run cover && nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "preversion": "npm run lint && npm test",
     "dev": "npm-run-all --parallel watch:*",
