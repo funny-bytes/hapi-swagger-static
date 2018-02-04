@@ -52,5 +52,6 @@ describe('hapi-swagger-static with default options', async () => {
         expect(payload).to.contain('<html>');
         expect(payload).to.contain('<!DOCTYPE html>');
         expect(payload).to.contain('<title>Swagger Petstore</title>');
+        expect(payload).to.contain('<h1>Swagger Petstore</h1>');
       }));
 });

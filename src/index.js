@@ -1,10 +1,9 @@
 const Boom = require('boom');
 const SwaggerParser = require('swagger-parser');
-const ReactDomServer = require('react-dom/server');
+const openapi2html = require('openapi2html');
 const util = require('util');
 const fs = require('fs');
 const path = require('path');
-const Api = require('./components/Api');
 const pkg = require('../package.json');
 
 const readFile = util.promisify(fs.readFile);
@@ -36,7 +35,7 @@ const register = async (server, {
             },
           },
         });
-        const html = ReactDomServer.renderToStaticMarkup(Api({ api }));
+        const html = openapi2html(api);
         const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
         const page = frame
           .replace(/\{\{content\}\}/, html)

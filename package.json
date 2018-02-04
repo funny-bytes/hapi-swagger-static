@@ -22,11 +22,7 @@
     "test": "NODE_ENV=test mocha --recursive test",
     "cover": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive test",
     "coveralls": "npm run cover && nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
-    "preversion": "npm run lint && npm test",
-    "dev": "npm-run-all --parallel watch:*",
-    "watch:server": "nodemon -e js,html --ignore public/ --watch src src/server.js",
-    "watch:jsx": "babel --plugins transform-react-jsx --watch -d . ./src/**/*.jsx",
-    "postinstall": "babel --plugins transform-react-jsx -d . ./src/**/*.jsx"
+    "preversion": "npm run lint && npm test"
   },
   "engines": {
     "node": ">=8.9.0"
@@ -60,15 +56,8 @@
     "vision": "^5.3.1"
   },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
     "boom": "^7.1.1",
-    "decamelize": "^2.0.0",
-    "github-flavored-markdown": "^1.0.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-render-html": "^0.6.0",
-    "reactstrap": "^5.0.0-beta",
+    "openapi2html": "^1.0.0-alpha.2",
     "swagger-parser": "^4.0.2"
   }
 }

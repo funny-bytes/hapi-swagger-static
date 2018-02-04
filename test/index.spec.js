@@ -4,7 +4,7 @@ const Inert = require('inert');
 const Vision = require('vision');
 const fs = require('fs');
 const sinon = require('sinon');
-const HapiSwaggerStatic = require('../src/index');
+const HapiSwaggerStatic = require('..');
 require('./setupTests');
 
 async function setup({ pluginOptions = {} }) {

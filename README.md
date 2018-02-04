@@ -62,7 +62,7 @@ The plugin provides the following options:
 | Option      | Default     | Description |
 |-------------|-------------|-------------|
 | `path`      | `/documentation.html` | The endpoint providing the static documentation page. |
-| `swaggerEndpoint` | '/swagger.json' | The endpoint to read the Swagger API specification from. |
+| `swaggerEndpoint` | `/swagger.json` | The endpoint to read the Swagger API specification from. |
 | `cache`     | `{ privacy: 'public', expiresIn: 60 * 60 * 1000 } // one hour` | Hapi's `route.options.cache` to be assigned to the static documentation endpoint. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionscache) for more information. |
 | `auth`      |  - | Hapi's `route.options.auth` to be assigned to the static documentation endpoint. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionsauth) for more information. By default, this option is not set, i.e., inheriting auth settings from Hapi's `server.options.routes.auth`. |
 | `headers` | `{}` | The request's `authorization` header is automatically forwarded to the `/swagger.json` endpoint. If you need any additional headers, add them through the `headers` option. |
