@@ -5,3 +5,6 @@ coverage/*
 build/*
 builds/*
 bundle.js
+
+# react
+src/components/*.js
