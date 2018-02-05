@@ -9,7 +9,7 @@ const readFile = util.promisify(fs.readFile);
 
 async function setup({ pluginOptions = {} }) {
   const server = new Hapi.Server({
-    port: 9001,
+    port: 9005,
   });
   const route = {
     method: 'GET',
@@ -25,7 +25,7 @@ async function setup({ pluginOptions = {} }) {
   return server;
 }
 
-describe('hapi-swagger-static with default options', async () => {
+describe('hapi-swagger-static for petstore API', async () => {
   let server;
 
   beforeEach(async () => {
@@ -50,7 +50,6 @@ describe('hapi-swagger-static with default options', async () => {
         expect(headers['cache-control']).to.contain('max-age=3600');
         expect(headers['cache-control']).to.contain('public');
         expect(payload).to.contain('<html>');
-        expect(payload).to.contain('<!DOCTYPE html>');
         expect(payload).to.contain('<title>Swagger Petstore</title>');
         expect(payload).to.contain('<h1>Swagger Petstore</h1>');
       }));
