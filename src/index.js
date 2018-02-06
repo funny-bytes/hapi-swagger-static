@@ -14,7 +14,8 @@ const register = async (server, {
   cache = { privacy: 'public', expiresIn: 60 * 60 * 1000 }, // one hour
   auth, // if undefined, inheriting auth settings from server.options.routes.auth
   headers: additionalHeaders = {},
-  frame: framePath = path.join(__dirname, 'frame.html'),
+  template,
+  viewOptions = {},
 }) => {
   server.route({
     method: 'GET',
@@ -36,7 +37,12 @@ const register = async (server, {
         },
       });
       const html = openapi2html(api);
-      const frame = await readFile(framePath, 'UTF-8');
+      // the preferred way is to render the page via `view`
+      if (h.view && template) {
+        return h.view(template, { api: { ...api, html } }, viewOptions);
+      }
+      // as a fallback, use own template
+      const frame = await readFile(path.join(__dirname, 'frame.html'), 'UTF-8');
       const page = frame
         .replace(/\{\{content\}\}/, html)
         .replace(/\{\{title\}\}/, api.info.title);

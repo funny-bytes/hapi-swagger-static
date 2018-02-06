@@ -3,7 +3,6 @@ const HapiSwagger = require('hapi-swagger');
 const Inert = require('inert');
 const Vision = require('vision');
 const fs = require('fs');
-const path = require('path');
 const sinon = require('sinon');
 const HapiSwaggerStatic = require('..');
 require('./setupTests');
@@ -174,58 +173,6 @@ describe('hapi-swagger-static with specific `swaggerEndpoint` option', async () 
         expect(payload).to.contain('<title>API Documentation 4711</title>');
         expect(payload).to.contain('<h1>API Documentation 4711</h1>');
         expect(payload).to.contain('/test4711');
-      }));
-});
-
-describe('hapi-swagger-static with specific `frame` option', async () => {
-  let server;
-
-  beforeEach(async () => {
-    server = await setup({
-      pluginOptions: { frame: path.join(__dirname, 'testframe.html') },
-    });
-  });
-
-  afterEach(async () => {
-    await server.stop();
-  });
-
-  it('should create /documentation.html with custom frame', () =>
-    server
-      .inject({
-        url: '/documentation.html',
-      })
-      .should.be.fulfilled.then((response) => {
-        const { statusCode, payload } = response;
-        expect(statusCode).to.be.equal(200);
-        expect(payload).to.contain('<html>');
-        expect(payload).to.contain('<title>API Documentation 4711</title>');
-        expect(payload).to.contain('<h1>API Documentation 4711</h1>');
-        expect(payload).to.contain('<p>this is a test frame</p>');
-      }));
-});
-
-describe('hapi-swagger-static with invalid `frame` option', async () => {
-  let server;
-
-  beforeEach(async () => {
-    server = await setup({
-      pluginOptions: { frame: 'bla.html' },
-    });
-  });
-
-  afterEach(async () => {
-    await server.stop();
-  });
-
-  it('should return http 500', () =>
-    server
-      .inject({
-        url: '/documentation.html',
-      })
-      .should.be.fulfilled.then((response) => {
-        const { statusCode } = response;
-        expect(statusCode).to.be.equal(500);
       }));
 });
 

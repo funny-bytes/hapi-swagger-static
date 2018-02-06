@@ -29,7 +29,7 @@
   },
   "peerDependencies": {
     "hapi": ">=17.x.x",
-    "hapi-swagger": ">=9.x.x"
+    "vision": ">=5.x.x"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
