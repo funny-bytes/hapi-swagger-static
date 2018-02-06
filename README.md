@@ -66,12 +66,13 @@ The plugin provides the following options:
 | `cache`     | `{ privacy: 'public', expiresIn: 60 * 60 * 1000 } // one hour` | Hapi's `route.options.cache` to be assigned to the static documentation endpoint. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionscache) for more information. |
 | `auth`      |  - | Hapi's `route.options.auth` to be assigned to the static documentation endpoint. Please refer to the [Hapi docs](https://hapijs.com/api#-routeoptionsauth) for more information. By default, this option is not set, i.e., inheriting auth settings from Hapi's `server.options.routes.auth`. |
 | `headers` | `{}` | The request's `authorization` header is automatically forwarded to the `/swagger.json` endpoint. If you need any additional headers, add them through the `headers` option. |
-| `template` | - | This plugin prefers `vision` to finally render the api into a page. The `template` option is the template filename and path, relative to the templates path configured via the server views manager. The api data will be provided into the view context, e.g., use `{{api.info.title}}` in the template to get hold of the api title. Use `{{{api.html}}}` (three curly brackets here!) in the template for rendering the api's html content. |
-| `viewOptions` | `{}` | The options passed to the view via `h.view()`. If your default layout does not provide the Bootstrap 4 CSS resources (Bootstrap's JS is not needed), you should provide a special layout for this. See the example below. |
+| `template` | - | This plugin prefers `vision` to render the api into a page. `template` is the template filename and path, relative to the templates path configured via the server views manager. The api data is provided as view context. Assuming Handlebars or Mustache as your template engine, e.g., you can use `{{api.info.title}}` in the template to get hold of the api title. Use `{{{api.html}}}` (with three curly brackets here!) in the template for rendering the api's html content. |
+| `viewOptions` | `{}` | The options passed to the view via `h.view()`. If your default layout does not provide the Bootstrap 4 CSS resources (Bootstrap's JS is not needed), you should provide a special layout for your template. See the example below. |
 
 ## View Example
 
-This example works with the following plugin options:
+This example assumes Handlebars or Mustache as template engine.
+It sets the following plugin options:
 ```js
 { template: 'api', // referring to the view file `api.html` below
   viewOptions: {
