@@ -130,4 +130,8 @@ Style example, e.g., `api.css` to be placed into `/public`, containing some mino
 .card .card-body .o2h-description p {
   margin-bottom: 0;
 }
+.card .card-body .o2h-example pre {
+  background-color: #eee;
+  font-size: small;
+}
 ```
