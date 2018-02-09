@@ -1,6 +1,6 @@
 {
   "name": "hapi-swagger-static",
-  "version": "2.0.0-beta.2",
+  "version": "2.0.0-beta.3",
   "description": "A small companion plugin for `hapi-swagger` or `hapi-swaggered` providing a static html documentation page as hapi route",
   "main": "src/index.js",
   "author": "Frank Thelen",
