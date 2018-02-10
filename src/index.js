@@ -16,6 +16,7 @@ const register = async (server, {
   headers: additionalHeaders = {},
   template,
   viewOptions = {},
+  o2hOptions = {},
 }) => {
   server.route({
     method: 'GET',
@@ -36,7 +37,7 @@ const register = async (server, {
           },
         },
       });
-      const html = openapi2html(api);
+      const html = openapi2html(api, o2hOptions);
       // the preferred way is to render the page via `view`
       if (h.view && template) {
         return h.view(template, { api: { ...api, html } }, viewOptions);
