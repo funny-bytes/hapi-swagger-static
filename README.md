@@ -135,4 +135,7 @@ Style example, e.g., `api.css` to be placed into `/public`, containing some mino
   background-color: #eee;
   font-size: small;
 }
+.o2h-parameter h5 .badge {
+  font-size: small;
+}
 ```
