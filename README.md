@@ -119,6 +119,7 @@ Style example, e.g., `api.css` to be placed into `/public`, containing some mino
 }
 .o2h-description p {
   color: grey;
+  margin-bottom: .5rem;
 }
 .card .card-body .h4, .card .card-body h4 {
   border-top: 1px solid #eee;
