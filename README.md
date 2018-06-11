@@ -8,7 +8,7 @@ It supports most of Swagger 2.0 / Open API 2.0.
 
 [![build status](https://img.shields.io/travis/frankthelen/hapi-swagger-static.svg)](http://travis-ci.org/frankthelen/hapi-swagger-static)
 [![Coverage Status](https://coveralls.io/repos/github/frankthelen/hapi-swagger-static/badge.svg?branch=master)](https://coveralls.io/github/frankthelen/hapi-swagger-static?branch=master)
-[![Dependency Status](https://gemnasium.com/badges/github.com/frankthelen/hapi-swagger-static.svg)](https://gemnasium.com/github.com/frankthelen/hapi-swagger-static)
+[![dependencies Status](https://david-dm.org/frankthelen/hapi-swagger-static/status.svg)](https://david-dm.org/frankthelen/hapi-swagger-static)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/hapi-swagger-static.svg)](https://greenkeeper.io/)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f71c0020a54eefa732ef/maintainability)](https://codeclimate.com/github/frankthelen/hapi-swagger-static/maintainability)
 [![node](https://img.shields.io/node/v/hapi-swagger-static.svg)]()

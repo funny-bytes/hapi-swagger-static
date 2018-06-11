@@ -38,23 +38,23 @@
     "coveralls": "^3.0.1",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-react": "^7.9.1",
     "eslint-plugin-should-promised": "^2.0.0",
-    "hapi": "^17.4.0",
+    "hapi": "^17.5.1",
     "hapi-swagger": "^9.1.1",
     "inert": "^5.1.0",
-    "mocha": "^5.1.1",
-    "nyc": "^11.7.1",
-    "sinon": "^5.0.3",
-    "sinon-chai": "^3.0.0",
-    "vision": "^5.3.2"
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "sinon": "^6.0.0",
+    "sinon-chai": "^3.1.0",
+    "vision": "^5.3.3"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "openapi2html": "^1.1.4",
-    "swagger-parser": "^4.1.0"
+    "openapi2html": "^1.1.5",
+    "swagger-parser": "^5.0.0"
   }
 }
