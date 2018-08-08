@@ -36,21 +36,20 @@ describe('hapi-swagger-static for petstore API', async () => {
     await server.stop();
   });
 
-  it('should provide route `documentation.html` for petstore.json', () =>
-    server
-      .inject({
-        url: '/documentation.html',
-      })
-      .should.be.fulfilled.then((response) => {
-        const { statusCode, headers, payload } = response;
-        expect(statusCode).to.be.equal(200);
-        expect(headers).to.have.property('content-type');
-        expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
-        expect(headers).to.have.property('cache-control');
-        expect(headers['cache-control']).to.contain('max-age=3600');
-        expect(headers['cache-control']).to.contain('public');
-        expect(payload).to.contain('<html>');
-        expect(payload).to.contain('<title>Swagger Petstore</title>');
-        expect(payload).to.contain('<h1>Swagger Petstore</h1>');
-      }));
+  it('should provide route `documentation.html` for petstore.json', () => server
+    .inject({
+      url: '/documentation.html',
+    })
+    .should.be.fulfilled.then((response) => {
+      const { statusCode, headers, payload } = response;
+      expect(statusCode).to.be.equal(200);
+      expect(headers).to.have.property('content-type');
+      expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
+      expect(headers).to.have.property('cache-control');
+      expect(headers['cache-control']).to.contain('max-age=3600');
+      expect(headers['cache-control']).to.contain('public');
+      expect(payload).to.contain('<html>');
+      expect(payload).to.contain('<title>Swagger Petstore</title>');
+      expect(payload).to.contain('<h1>Swagger Petstore</h1>');
+    }));
 });

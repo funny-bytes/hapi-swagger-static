@@ -32,29 +32,29 @@
     "vision": ">=5.x.x"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^8.2.6",
     "chai": "^4.1.2",
     "chai-as-promised": "^7.1.1",
-    "coveralls": "^3.0.1",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "coveralls": "^3.0.2",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.9.1",
+    "eslint-plugin-react": "^7.10.0",
     "eslint-plugin-should-promised": "^2.0.0",
-    "hapi": "^17.5.1",
+    "hapi": "^17.5.3",
     "hapi-swagger": "^9.1.1",
     "inert": "^5.1.0",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
-    "sinon": "^6.0.0",
-    "sinon-chai": "^3.1.0",
+    "sinon": "^6.1.4",
+    "sinon-chai": "^3.2.0",
     "vision": "^5.3.3"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
     "openapi2html": "^1.1.5",
-    "swagger-parser": "^5.0.0"
+    "swagger-parser": "^5.0.2"
   }
 }
