@@ -23,8 +23,17 @@ const register = async (server, {
     options: auth === undefined ? { cache } : { cache, auth },
     handler: async (request, h) => {
       try {
+        const response = await server.inject({
+          url: swaggerEndpoint,
+          headers: {
+            authorization: request.headers.authorization, // forward
+            ...additionalHeaders,
+          },
+        });
+        const { payload } = response;
+        const swaggerObject = JSON.parse(payload);
         const parser = new SwaggerParser();
-        const api = await parser.parse(`${server.info.uri}${swaggerEndpoint}`, {
+        const api = await parser.parse(swaggerObject, {
           resolve: {
             file: false, // don't resolve local file references
             http: {
