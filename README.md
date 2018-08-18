@@ -6,7 +6,7 @@ to create a static page from the `/swagger.json` endpoint.
 The static page is provided as route `/documentation.html` (can be renamed).
 It supports most of Swagger 2.0 / Open API 2.0.
 
-[![build status](https://img.shields.io/travis/frankthelen/hapi-swagger-static.svg)](http://travis-ci.org/frankthelen/hapi-swagger-static)
+[![Build Status](https://travis-ci.org/frankthelen/hapi-swagger-static.svg?branch=master)](https://travis-ci.org/frankthelen/hapi-swagger-static)
 [![Coverage Status](https://coveralls.io/repos/github/frankthelen/hapi-swagger-static/badge.svg?branch=master)](https://coveralls.io/github/frankthelen/hapi-swagger-static?branch=master)
 [![dependencies Status](https://david-dm.org/frankthelen/hapi-swagger-static/status.svg)](https://david-dm.org/frankthelen/hapi-swagger-static)
 [![Greenkeeper badge](https://badges.greenkeeper.io/frankthelen/hapi-swagger-static.svg)](https://greenkeeper.io/)
