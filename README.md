@@ -1,6 +1,6 @@
 # hapi-swagger-static
 
-Plugin for Hapi v17 providing a static html documentation page.
+Plugin for Hapi providing a static html documentation page.
 It's a small companion plugin for `hapi-swagger` or `hapi-swaggered`
 to create a static page from the `/swagger.json` endpoint.
 The static page is provided as route `/documentation.html` (can be renamed).
