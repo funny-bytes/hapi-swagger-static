@@ -10,8 +10,3 @@ global.chai = chai;
 global.sinon = sinon;
 global.expect = chai.expect;
 global.should = chai.should();
-
-// Fail tests on any error
-console.error = (message) => { // eslint-disable-line no-console
-  throw new Error(message);
-};
