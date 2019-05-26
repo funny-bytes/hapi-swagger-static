@@ -44,7 +44,7 @@
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-should-promised": "^2.0.0",
     "hapi": "^18.1.0",
-    "hapi-swagger": "^9.4.2",
+    "hapi-swagger": "^10.0.0",
     "inert": "^5.1.2",
     "mocha": "^6.0.2",
     "nyc": "^13.3.0",
