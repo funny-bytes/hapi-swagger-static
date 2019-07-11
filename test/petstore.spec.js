@@ -1,4 +1,4 @@
-const Hapi = require('hapi');
+const Hapi = require('@hapi/hapi');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');

@@ -26,11 +26,11 @@ npm install hapi-swagger-static
 Register the plugin with Hapi server like this:
 
 ```js
-const Hapi = require('hapi');
+const Hapi = require('@hapi/hapi');
 const HapiSwagger = require('hapi-swagger');
 const HapiSwaggerStatic = require('hapi-swagger-static');
-const Inert = require('inert');
-const Vision = require('vision');
+const Inert = require('@hapi/inert');
+const Vision = require('@hapi/vision');
 
 const server = new Hapi.Server({
   port: 3000,
