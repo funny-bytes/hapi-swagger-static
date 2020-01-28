@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "bluebird": "^3.5.5",
-    "openapi2html": "^1.1.11",
+    "openapi2html": "^1.1.12",
     "swagger-parser": "^8.0.0"
   }
 }
