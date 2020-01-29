@@ -1,11 +1,18 @@
-const Hapi = require('@hapi/hapi');
-const HapiSwagger = require('hapi-swagger');
-const Inert = require('@hapi/inert');
-const Vision = require('@hapi/vision');
 const fs = require('fs');
 const sinon = require('sinon');
-const HapiSwaggerStatic = require('..');
+const semver = require('semver');
+const HapiSwaggerStatic = require('..'); // eslint-disable-line import/order
 require('./setupTests');
+
+const nodeVersion = process.version;
+const node12 = semver.satisfies(nodeVersion, '>=12.x.x');
+const Hapi = node12 ? require('hapi19') : require('hapi18');
+const HapiSwagger = node12 ? require('hapiSwagger12') : require('hapiSwagger11');
+const Inert = node12 ? require('inert6') : require('inert5');
+const Vision = node12 ? require('vision6') : require('vision5');
+
+// eslint-disable-next-line no-console
+console.log(`Testing Node ${nodeVersion}, Hapi ${node12 ? '19' : '18'}`);
 
 async function setup({ pluginOptions = {} }) {
   const server = new Hapi.Server({

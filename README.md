@@ -15,6 +15,10 @@ It supports most of Swagger 2.0 / Open API 2.0.
 [![code style](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript)
 [![License Status](http://img.shields.io/npm/l/hapi-swagger-static.svg)]()
 
+Tested with
+* Node 12/13, Hapi 19, Hapi-Swagger 12, Vision 6, Inert 6
+* Node 10, Hapi 18, Hapi-Swagger 11, Vision 5, Inert 5
+
 ## Install
 
 ```bash

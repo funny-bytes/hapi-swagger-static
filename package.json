@@ -19,42 +19,45 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path ./.eslintignore",
-    "test": "NODE_ENV=test mocha --recursive test",
-    "cover": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive test",
-    "coveralls": "npm run cover && nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
+    "test": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive test",
+    "coveralls": "nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "preversion": "npm run lint && npm test"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=10.x.x"
   },
   "peerDependencies": {
     "@hapi/hapi": ">=17.x.x",
     "@hapi/vision": ">=5.x.x"
   },
   "devDependencies": {
-    "@hapi/hapi": "^18.3.1",
-    "@hapi/inert": "^5.2.1",
-    "@hapi/vision": "^5.5.2",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
-    "coveralls": "^3.0.4",
-    "eslint": "^6.0.1",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.18.0",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-should-promised": "^2.0.0",
-    "hapi-swagger": "^10.0.2",
-    "mocha": "^6.1.4",
-    "nyc": "^14.1.1",
-    "sinon": "^7.3.2",
-    "sinon-chai": "^3.3.0"
+    "hapi18": "npm:@hapi/hapi@^18.4.0",
+    "hapi19": "npm:@hapi/hapi@^19.0.5",
+    "hapiSwagger11": "npm:hapi-swagger@^11.1.0",
+    "hapiSwagger12": "npm:hapi-swagger@^12.0.0",
+    "inert5": "npm:@hapi/inert@^5.2.2",
+    "inert6": "npm:@hapi/inert@^6.0.1",
+    "mocha": "^7.0.1",
+    "nyc": "^15.0.0",
+    "semver": "^7.1.1",
+    "sinon": "^8.1.1",
+    "sinon-chai": "^3.4.0",
+    "vision5": "npm:@hapi/vision@^5.5.4",
+    "vision6": "npm:@hapi/vision@^6.0.0"
   },
   "dependencies": {
-    "bluebird": "^3.5.5",
-    "openapi2html": "^1.1.11",
-    "swagger-parser": "^8.0.0"
+    "openapi2html": "^1.1.12",
+    "swagger-parser": "^8.0.4"
   }
 }
