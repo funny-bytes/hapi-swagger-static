@@ -51,7 +51,7 @@
     "mocha": "^7.0.1",
     "nyc": "^15.0.0",
     "semver": "^7.1.1",
-    "sinon": "^8.1.1",
+    "sinon": "^9.0.1",
     "sinon-chai": "^3.4.0",
     "vision5": "npm:@hapi/vision@^5.5.4",
     "vision6": "npm:@hapi/vision@^6.0.0"
