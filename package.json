@@ -58,6 +58,6 @@
   },
   "dependencies": {
     "openapi2html": "^1.1.12",
-    "swagger-parser": "^8.0.4"
+    "swagger-parser": "^9.0.1"
   }
 }
