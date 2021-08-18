@@ -7,7 +7,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git://github.com/frankthelen/hapi-swagger-static"
+    "url": "git://github.com/funny-bytes/hapi-swagger-static"
   },
   "keywords": [
     "hapi-swagger",
@@ -31,16 +31,16 @@
     "@hapi/vision": ">=5.x.x"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.3",
-    "chai": "^4.2.0",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "coveralls": "^3.0.9",
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.18.0",
+    "coveralls": "^3.1.1",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-promise": "^5.1.0",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-should-promised": "^2.0.0",
     "hapi18": "npm:@hapi/hapi@^18.4.0",
     "hapi19": "npm:@hapi/hapi@^19.0.5",
@@ -48,16 +48,16 @@
     "hapiSwagger12": "npm:hapi-swagger@^12.0.0",
     "inert5": "npm:@hapi/inert@^5.2.2",
     "inert6": "npm:@hapi/inert@^6.0.1",
-    "mocha": "^7.0.1",
-    "nyc": "^15.0.0",
-    "semver": "^7.1.1",
-    "sinon": "^8.1.1",
-    "sinon-chai": "^3.4.0",
+    "mocha": "^9.0.3",
+    "nyc": "^15.1.0",
+    "semver": "^7.3.5",
+    "sinon": "^11.1.2",
+    "sinon-chai": "^3.7.0",
     "vision5": "npm:@hapi/vision@^5.5.4",
     "vision6": "npm:@hapi/vision@^6.0.0"
   },
   "dependencies": {
     "openapi2html": "^1.1.12",
-    "swagger-parser": "^8.0.4"
+    "swagger-parser": "^10.0.3"
   }
 }
