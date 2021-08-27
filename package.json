@@ -52,7 +52,7 @@
     "vision6": "npm:@hapi/vision@^6.0.0"
   },
   "dependencies": {
-    "openapi2html": "^1.1.16",
+    "openapi2html": "^1.1.17",
     "swagger-parser": "^10.0.3"
   }
 }
