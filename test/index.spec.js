@@ -187,6 +187,14 @@ describe('hapi-swagger-static with error while plugin registration', () => {
   });
 
   it('should not fail', async () => {
-    await expect(() => setup({})).not.toThrow();
+    let server;
+
+    try {
+      server = await setup({});
+    } catch (error) {
+      expect.fail(0, 1, error);
+    } finally {
+      await server.stop();
+    }
   });
 });

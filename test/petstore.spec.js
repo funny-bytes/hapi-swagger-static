@@ -31,7 +31,7 @@ async function setup({ pluginOptions = {} }) {
   return server;
 }
 
-xdescribe('hapi-swagger-static for petstore API', () => {
+describe('hapi-swagger-static for petstore API', () => {
   let server;
 
   beforeEach(async () => {
