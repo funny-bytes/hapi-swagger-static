@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path ./.eslintignore",
-    "test": "jest --coverage test/*",
+    "test": "jest --coverage --detectOpenHandles test/*",
     "coveralls": "nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "preversion": "npm run lint && npm test"
   },
