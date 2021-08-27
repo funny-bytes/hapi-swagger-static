@@ -1,8 +1,6 @@
 const fs = require('fs');
-const sinon = require('sinon');
 const semver = require('semver');
 const HapiSwaggerStatic = require('..'); // eslint-disable-line import/order
-require('./setupTests');
 
 const nodeVersion = process.version;
 const node12 = semver.satisfies(nodeVersion, '>=12.x.x');
@@ -10,6 +8,8 @@ const Hapi = node12 ? require('hapi19') : require('hapi18');
 const HapiSwagger = node12 ? require('hapiSwagger12') : require('hapiSwagger11');
 const Inert = node12 ? require('inert6') : require('inert5');
 const Vision = node12 ? require('vision6') : require('vision5');
+
+// jest.mock('fs');
 
 // eslint-disable-next-line no-console
 console.log(`Testing Node ${nodeVersion}, Hapi ${node12 ? '19' : '18'}`);
@@ -43,7 +43,7 @@ async function setup({ pluginOptions = {} }) {
   return server;
 }
 
-describe('hapi-swagger-static with default options', async () => {
+describe('hapi-swagger-static with default options', () => {
   let server;
 
   beforeEach(async () => {
@@ -54,26 +54,24 @@ describe('hapi-swagger-static with default options', async () => {
     await server.stop();
   });
 
-  it('should provide route `documentation.html` which returns HTTP 200 with html content', () => server
-    .inject({
+  it('should provide route `documentation.html` which returns HTTP 200 with html content', async () => {
+    const { statusCode, headers, payload } = await server.inject({
       url: '/documentation.html',
-    })
-    .should.be.fulfilled.then((response) => {
-      const { statusCode, headers, payload } = response;
-      expect(statusCode).to.be.equal(200);
-      expect(headers).to.have.property('content-type');
-      expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
-      expect(headers).to.have.property('cache-control');
-      expect(headers['cache-control']).to.contain('max-age=3600');
-      expect(headers['cache-control']).to.contain('public');
-      expect(payload).to.contain('<html>');
-      expect(payload).to.contain('<title>API Documentation 4711</title>');
-      expect(payload).to.contain('<h1>API Documentation 4711</h1>');
-      expect(payload).to.contain('/test4711');
-    }));
+    });
+    expect(statusCode).toEqual(200);
+    expect(headers).toHaveProperty('content-type');
+    expect(headers['content-type']).toEqual('text/html; charset=utf-8');
+    expect(headers).toHaveProperty('cache-control');
+    expect(headers['cache-control']).toContain('max-age=3600');
+    expect(headers['cache-control']).toContain('public');
+    expect(payload).toContain('<html>');
+    expect(payload).toContain('<title>API Documentation 4711</title>');
+    expect(payload).toContain('<h1>API Documentation 4711</h1>');
+    expect(payload).toContain('/test4711');
+  });
 });
 
-describe('hapi-swagger-static with `path` option', async () => {
+describe('hapi-swagger-static with `path` option', () => {
   let server;
 
   beforeEach(async () => {
@@ -84,26 +82,24 @@ describe('hapi-swagger-static with `path` option', async () => {
     await server.stop();
   });
 
-  it('should provide route `printable.html`', () => server
-    .inject({
+  it('should provide route `printable.html`', async () => {
+    const { statusCode, headers, payload } = await server.inject({
       url: '/printable.html',
-    })
-    .should.be.fulfilled.then((response) => {
-      const { statusCode, headers, payload } = response;
-      expect(statusCode).to.be.equal(200);
-      expect(headers).to.have.property('content-type');
-      expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
-      expect(headers).to.have.property('cache-control');
-      expect(headers['cache-control']).to.contain('max-age=3600');
-      expect(headers['cache-control']).to.contain('public');
-      expect(payload).to.contain('<html>');
-      expect(payload).to.contain('<title>API Documentation 4711</title>');
-      expect(payload).to.contain('<h1>API Documentation 4711</h1>');
-      expect(payload).to.contain('/test4711');
-    }));
+    });
+    expect(statusCode).toEqual(200);
+    expect(headers).toHaveProperty('content-type');
+    expect(headers['content-type']).toEqual('text/html; charset=utf-8');
+    expect(headers).toHaveProperty('cache-control');
+    expect(headers['cache-control']).toContain('max-age=3600');
+    expect(headers['cache-control']).toContain('public');
+    expect(payload).toContain('<html>');
+    expect(payload).toContain('<title>API Documentation 4711</title>');
+    expect(payload).toContain('<h1>API Documentation 4711</h1>');
+    expect(payload).toContain('/test4711');
+  });
 });
 
-describe('hapi-swagger-static with `cache` option equals `false`', async () => {
+describe('hapi-swagger-static with `cache` option equals `false`', () => {
   let server;
 
   beforeEach(async () => {
@@ -114,18 +110,17 @@ describe('hapi-swagger-static with `cache` option equals `false`', async () => {
     await server.stop();
   });
 
-  it('should not set `cache-control` header', () => server
-    .inject({
+  it('should not set `cache-control` header', async () => {
+    const { statusCode, headers } = await server.inject({
       url: '/documentation.html',
-    })
-    .should.be.fulfilled.then((response) => {
-      const { statusCode, headers } = response;
-      expect(statusCode).to.be.equal(200);
-      expect(headers).to.not.have.property('cache-control');
-    }));
+    });
+
+    expect(statusCode).toEqual(200);
+    expect(headers).not.toHaveProperty('cache-control');
+  });
 });
 
-describe('hapi-swagger-static with specific `cache` option', async () => {
+describe('hapi-swagger-static with specific `cache` option', () => {
   let server;
 
   beforeEach(async () => {
@@ -138,20 +133,19 @@ describe('hapi-swagger-static with specific `cache` option', async () => {
     await server.stop();
   });
 
-  it('should set `cache-control` header specifically', () => server
-    .inject({
-      url: '/documentation.html',
-    })
-    .should.be.fulfilled.then((response) => {
-      const { statusCode, headers } = response;
-      expect(statusCode).to.be.equal(200);
-      expect(headers).to.have.property('cache-control');
-      expect(headers['cache-control']).to.contain('max-age=86400');
-      expect(headers['cache-control']).to.contain('public');
-    }));
+  it('should set `cache-control` header specifically', async () => {
+    const { statusCode, headers } = await server
+      .inject({
+        url: '/documentation.html',
+      });
+    expect(statusCode).toEqual(200);
+    expect(headers).toHaveProperty('cache-control');
+    expect(headers['cache-control']).toContain('max-age=86400');
+    expect(headers['cache-control']).toContain('public');
+  });
 });
 
-describe('hapi-swagger-static with specific `swaggerEndpoint` option', async () => {
+describe('hapi-swagger-static with specific `swaggerEndpoint` option', () => {
   let server;
 
   beforeEach(async () => {
@@ -164,40 +158,35 @@ describe('hapi-swagger-static with specific `swaggerEndpoint` option', async () 
     await server.stop();
   });
 
-  it('should create /documentation.html correctly', () => server
-    .inject({
-      url: '/documentation.html',
-    })
-    .should.be.fulfilled.then((response) => {
-      const { statusCode, payload } = response;
-      expect(statusCode).to.be.equal(200);
-      expect(payload).to.contain('<html>');
-      expect(payload).to.contain('<title>API Documentation 4711</title>');
-      expect(payload).to.contain('<h1>API Documentation 4711</h1>');
-      expect(payload).to.contain('/test4711');
-    }));
+  it('should create /documentation.html correctly', async () => {
+    const { statusCode, payload } = await server
+      .inject({
+        url: '/documentation.html',
+      });
+    expect(statusCode).toEqual(200);
+    expect(payload).toContain('<html>');
+    expect(payload).toContain('<title>API Documentation 4711</title>');
+    expect(payload).toContain('<h1>API Documentation 4711</h1>');
+    expect(payload).toContain('/test4711');
+  });
 });
 
-describe('hapi-swagger-static with error while plugin registration', async () => {
-  let server;
-
+describe('hapi-swagger-static with error while plugin registration', () => {
   beforeEach(async () => {
-    sinon.stub(fs, 'createReadStream').throws('Error');
-    sinon.stub(fs, 'createWriteStream').throws('Error');
+    jest.spyOn(fs, 'createReadStream').mockImplementation(() => {
+      throw new Error('Error');
+    });
+    jest.spyOn(fs, 'createWriteStream').mockImplementation(() => {
+      throw new Error('Error');
+    });
   });
 
   afterEach(async () => {
-    fs.createReadStream.restore();
-    fs.createWriteStream.restore();
+    fs.createReadStream.mockReset();
+    fs.createWriteStream.mockReset();
   });
 
   it('should not fail', async () => {
-    try {
-      server = await setup({});
-    } catch (error) {
-      expect.fail(0, 1, error);
-    } finally {
-      await server.stop();
-    }
+    await expect(() => setup({})).not.toThrow();
   });
 });

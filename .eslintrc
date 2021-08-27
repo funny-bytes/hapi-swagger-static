@@ -2,6 +2,9 @@
   "extends": [
     "airbnb-base"
   ],
+  "env": {
+    "jest": true
+  },
   "plugins": [
     "promise"
   ]

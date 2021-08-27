@@ -3,7 +3,6 @@ const path = require('path');
 const util = require('util');
 const semver = require('semver');
 const HapiSwaggerStatic = require('..'); // eslint-disable-line import/order
-require('./setupTests');
 
 const readFile = util.promisify(fs.readFile);
 
@@ -32,7 +31,7 @@ async function setup({ pluginOptions = {} }) {
   return server;
 }
 
-describe('hapi-swagger-static for petstore API', async () => {
+describe('hapi-swagger-static for petstore API', () => {
   let server;
 
   beforeEach(async () => {
@@ -43,20 +42,18 @@ describe('hapi-swagger-static for petstore API', async () => {
     await server.stop();
   });
 
-  it('should provide route `documentation.html` for petstore.json', () => server
-    .inject({
+  it('should provide route `documentation.html` for petstore.json', async () => {
+    const { statusCode, headers, payload } = await server.inject({
       url: '/documentation.html',
-    })
-    .should.be.fulfilled.then((response) => {
-      const { statusCode, headers, payload } = response;
-      expect(statusCode).to.be.equal(200);
-      expect(headers).to.have.property('content-type');
-      expect(headers['content-type']).to.be.equal('text/html; charset=utf-8');
-      expect(headers).to.have.property('cache-control');
-      expect(headers['cache-control']).to.contain('max-age=3600');
-      expect(headers['cache-control']).to.contain('public');
-      expect(payload).to.contain('<html>');
-      expect(payload).to.contain('<title>Swagger Petstore</title>');
-      expect(payload).to.contain('<h1>Swagger Petstore</h1>');
-    }));
+    });
+    expect(statusCode).toEqual(200);
+    expect(headers).toHaveProperty('content-type');
+    expect(headers['content-type']).toEqual('text/html; charset=utf-8');
+    expect(headers).toHaveProperty('cache-control');
+    expect(headers['cache-control']).toContain('max-age=3600');
+    expect(headers['cache-control']).toContain('public');
+    expect(payload).toContain('<html>');
+    expect(payload).toContain('<title>Swagger Petstore</title>');
+    expect(payload).toContain('<h1>Swagger Petstore</h1>');
+  });
 });

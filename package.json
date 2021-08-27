@@ -19,7 +19,7 @@
   ],
   "scripts": {
     "lint": "eslint . --ignore-path ./.eslintignore",
-    "test": "NODE_ENV=test nyc --reporter=lcov --reporter=text-summary mocha --exit --recursive test",
+    "test": "jest --coverage test/*",
     "coveralls": "nyc report --reporter=lcovonly && cat ./coverage/lcov.info | coveralls",
     "preversion": "npm run lint && npm test"
   },
@@ -32,12 +32,10 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "chai": "^4.3.4",
-    "chai-as-promised": "^7.1.1",
     "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
@@ -48,16 +46,13 @@
     "hapiSwagger12": "npm:hapi-swagger@^12.0.0",
     "inert5": "npm:@hapi/inert@^5.2.2",
     "inert6": "npm:@hapi/inert@^6.0.1",
-    "mocha": "^9.0.3",
-    "nyc": "^15.1.0",
+    "jest": "^27.1.0",
     "semver": "^7.3.5",
-    "sinon": "^11.1.2",
-    "sinon-chai": "^3.7.0",
     "vision5": "npm:@hapi/vision@^5.5.4",
     "vision6": "npm:@hapi/vision@^6.0.0"
   },
   "dependencies": {
-    "openapi2html": "^1.1.12",
+    "openapi2html": "^1.1.16",
     "swagger-parser": "^10.0.3"
   }
 }
