@@ -8,7 +8,7 @@ It supports most of Swagger 2.0 / Open API 2.0.
 
 ![main workflow](https://github.com/funny-bytes/hapi-swagger-static/actions/workflows/main.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/funny-bytes/hapi-swagger-static/badge.svg?branch=master)](https://coveralls.io/github/funny-bytes/hapi-swagger-static?branch=master)
-[![dependencies Status](https://david-dm.org/funny-bytes/hapi-swagger-static/status.svg)](https://david-dm.org/frankthelen/hapi-swagger-static)
+[![dependencies Status](https://david-dm.org/funny-bytes/hapi-swagger-static/status.svg)](https://david-dm.org/funny-bytes/hapi-swagger-static)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f71c0020a54eefa732ef/maintainability)](https://codeclimate.com/github/funny-bytes/hapi-swagger-static/maintainability)
 [![node](https://img.shields.io/node/v/hapi-swagger-static.svg)]()
 [![code style](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript)
