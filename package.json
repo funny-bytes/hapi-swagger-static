@@ -3,6 +3,7 @@
   "version": "2.0.15",
   "description": "A small companion plugin for `hapi-swagger` or `hapi-swaggered` providing a static html documentation page as hapi route",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "author": "Frank Thelen",
   "license": "MIT",
   "repository": {
@@ -31,6 +32,13 @@
     "@hapi/vision": ">=5.x.x"
   },
   "devDependencies": {
+    "@hapi/hapi": "^19.2.0",
+    "@hapi/inert": "^6.0.4",
+    "@hapi/vision": "^6.1.0",
+    "@types/hapi": "^18.0.6",
+    "@types/hapi__hapi": "^20.0.9",
+    "@types/hapi__inert": "^5.2.3",
+    "@types/hapi__vision": "^5.5.3",
     "babel-eslint": "^10.1.0",
     "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
@@ -40,16 +48,8 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-should-promised": "^2.0.0",
-    "hapi18": "npm:@hapi/hapi@^18.4.0",
-    "hapi19": "npm:@hapi/hapi@^19.0.5",
-    "hapiSwagger11": "npm:hapi-swagger@^11.1.0",
-    "hapiSwagger12": "npm:hapi-swagger@^12.0.0",
-    "inert5": "npm:@hapi/inert@^5.2.2",
-    "inert6": "npm:@hapi/inert@^6.0.1",
-    "jest": "^27.1.0",
-    "semver": "^7.3.5",
-    "vision5": "npm:@hapi/vision@^5.5.4",
-    "vision6": "npm:@hapi/vision@^6.0.0"
+    "hapi-swagger": "^12.1.3",
+    "jest": "^27.1.0"
   },
   "dependencies": {
     "openapi2html": "^1.1.17",

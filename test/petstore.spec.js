@@ -1,17 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
-const semver = require('semver');
+const Hapi = require('@hapi/hapi');
 const HapiSwaggerStatic = require('..'); // eslint-disable-line import/order
 
 const readFile = util.promisify(fs.readFile);
-
-const nodeVersion = process.version;
-const node12 = semver.satisfies(nodeVersion, '>=12.x.x');
-const Hapi = node12 ? require('hapi19') : require('hapi18');
-
-// eslint-disable-next-line no-console
-console.log(`Testing Node ${nodeVersion}, Hapi ${node12 ? '19' : '18'}`);
 
 async function setup({ pluginOptions = {} }) {
   const server = new Hapi.Server({
