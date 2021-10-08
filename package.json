@@ -39,6 +39,7 @@
     "@types/hapi__hapi": "^20.0.9",
     "@types/hapi__inert": "^5.2.3",
     "@types/hapi__vision": "^5.5.3",
+    "ansi-regex": ">=5.0.1",
     "babel-eslint": "^10.1.0",
     "coveralls": "^3.1.1",
     "eslint": "^7.32.0",
@@ -49,7 +50,8 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-should-promised": "^2.0.0",
     "hapi-swagger": "^12.1.3",
-    "jest": "^27.1.0"
+    "jest": "^27.1.0",
+    "tmpl": ">=1.0.5"
   },
   "dependencies": {
     "openapi2html": "^1.1.17",
