@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "openapi2html": "^1.1.17",
-    "swagger-parser": "^10.0.3"
+    "swagger-parser": "^10.0.3",
+    "validator": ">=13.7.0"
   }
 }
