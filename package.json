@@ -44,13 +44,13 @@
     "coveralls": "^3.1.1",
     "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-promise": "^5.1.0",
-    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-should-promised": "^2.0.0",
     "hapi-swagger": "^14.2.4",
-    "jest": "^27.1.0",
+    "jest": "^27.3.1",
     "tmpl": ">=1.0.5"
   },
   "dependencies": {
