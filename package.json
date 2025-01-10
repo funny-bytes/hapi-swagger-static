@@ -54,7 +54,7 @@
     "tmpl": ">=1.0.5"
   },
   "dependencies": {
-    "openapi2html": "^1.1.22",
+    "openapi2html": "^2.0.0",
     "swagger-parser": "^10.0.3",
     "validator": "^13.11.0"
   }
