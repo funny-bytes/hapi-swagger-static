@@ -1,6 +1,6 @@
 {
   "name": "hapi-swagger-static",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A small companion plugin for `hapi-swagger` or `hapi-swaggered` providing a static html documentation page as hapi route",
   "main": "src/index.js",
   "types": "src/index.d.ts",
